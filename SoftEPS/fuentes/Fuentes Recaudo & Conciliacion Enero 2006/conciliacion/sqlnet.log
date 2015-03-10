@@ -1,0 +1,80 @@
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=servidor)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=dbo)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi7\Bin\delphi32.exe)(HOST=SERVIDOR)(USER=Administrador))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 30-ABR-2005 22:41:42
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle)(ARGV0=oracledbo)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))'))(CONNECT_DATA=(SID=dbo)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi7\Bin\delphi32.exe)(HOST=SERVIDOR)(USER=Administrador))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 30-ABR-2005 22:41:42
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12560
+    TNS-12560: TNS:error del adaptador de protocolo
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Error del adaptador de protocolo
+    nt secondary err code: 2
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=servidor)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=dbo)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi7\Bin\delphi32.exe)(HOST=SERVIDOR)(USER=Administrador))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 30-ABR-2005 22:42:01
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle)(ARGV0=oracledbo)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))'))(CONNECT_DATA=(SID=dbo)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi7\Bin\delphi32.exe)(HOST=SERVIDOR)(USER=Administrador))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 30-ABR-2005 22:42:01
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12560
+    TNS-12560: TNS:error del adaptador de protocolo
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Error del adaptador de protocolo
+    nt secondary err code: 2
+    nt OS err code: 0

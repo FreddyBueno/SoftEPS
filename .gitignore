@@ -1,0 +1,11 @@
+*.dcu
+*.otares
+*.res
+*.vlb
+*.exe
+*.local
+*.identcache
+*.~*
+*.zip
+*.rar
+_history\

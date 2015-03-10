@@ -1,0 +1,21 @@
+TRUNCATE TABLE temporales2;
+
+DECLARE xx CURSOR
+	FOR SELECT afiliados.cod_regional,(SELECT DISTINCT campo3 FROM temporales WHERE campo1=relacion_afiliados.tip_documento_cot AND campo2=relacion_afiliados.num_documento_cot HAVING convert(datetime,'01/'+temporales.campo3)=max(convert(datetime,'01/'+temporales.campo3)))
+	FROM   afiliados,relacion_afiliados (INDEX pk_relacion_afiliados) 
+	WHERE  ((afiliados.tip_documento = relacion_afiliados.tip_documento_ben) AND
+			 (afiliados.num_documento = relacion_afiliados.num_documento_ben));
+
+DECLARE @regional VARCHAR(18)
+DECLARE @Ult_pago VARCHAR(18)
+OPEN xx
+WHILE @@sqlstatus <> 2 
+BEGIN
+  FETCH xx INTO @regional, @Ult_pago
+  IF @Ult_pago = null SELECT @Ult_pago ='<1999'
+
+  INSERT INTO temporales2 (campo1,campo2,campo3,campo4) VALUES (@regional, @Ult_pago,'0','0')
+END
+CLOSE xx;
+
+DEALLOCATE CURSOR xx;

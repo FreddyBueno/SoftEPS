@@ -1,0 +1,64 @@
+
+
+***********************************************************************
+Fatal OSN connect error 12500, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1526)))(CONNECT_DATA=(SID=oraclede)(CID=(PROGRAM=DELPHI32.EXE)(HOST=EQUIPO03)(USER=administrator))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 2.3.3.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 2.3.3.0.0 - Production
+  Time: 11-FEB-02 19:30:42
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12204
+    TNS-12204: TNS:una aplicación ha rechazado los datos recibidos
+    ns main err code: 12564
+    TNS-12564: TNS:conexión rechazada
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal OSN connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1526)))(CONNECT_DATA=(SID=softeps)(CID=(PROGRAM=RECAUDO.EXE)(HOST=EQUIPO05)(USER=ADMINISTRADOR))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 2.3.3.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 2.3.3.0.0 - Production
+  Time: 13-MAR-02 18:52:46
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:no se puede conectar con el destino
+    ns main err code: 12560
+    TNS-12560: TNS:error del adaptador de protocolo
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found;  product=NETWORK; facility=TNS
+
+    nt secondary err code: 65
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal OSN connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1526)))(CONNECT_DATA=(SID=softeps)(CID=(PROGRAM=RECAUDO.EXE)(HOST=EQUIPO05)(USER=ADMINISTRADOR))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 2.3.3.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 2.3.3.0.0 - Production
+  Time: 13-MAR-02 18:54:15
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:no se puede conectar con el destino
+    ns main err code: 12560
+    TNS-12560: TNS:error del adaptador de protocolo
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found;  product=NETWORK; facility=TNS
+
+    nt secondary err code: 65
+    nt OS err code: 0

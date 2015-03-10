@@ -1,0 +1,301 @@
+
+
+***********************************************************************
+Fatal OSN connect error 12500, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1526)))(CONNECT_DATA=(SID=oraclede)(CID=(PROGRAM=DELPHI32.EXE)(HOST=EQUIPO03)(USER=administrator))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 2.3.3.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 2.3.3.0.0 - Production
+  Time: 11-FEB-02 19:30:42
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12204
+    TNS-12204: TNS:una aplicación ha rechazado los datos recibidos
+    ns main err code: 12564
+    TNS-12564: TNS:conexión rechazada
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal OSN connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1526)))(CONNECT_DATA=(SID=softeps)(CID=(PROGRAM=RECAUDO.EXE)(HOST=EQUIPO05)(USER=ADMINISTRADOR))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 2.3.3.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 2.3.3.0.0 - Production
+  Time: 13-MAR-02 18:52:46
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:no se puede conectar con el destino
+    ns main err code: 12560
+    TNS-12560: TNS:error del adaptador de protocolo
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found;  product=NETWORK; facility=TNS
+
+    nt secondary err code: 65
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal OSN connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=135.1.1.1)(Port=1526)))(CONNECT_DATA=(SID=softeps)(CID=(PROGRAM=RECAUDO.EXE)(HOST=EQUIPO05)(USER=ADMINISTRADOR))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 2.3.3.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 2.3.3.0.0 - Production
+  Time: 13-MAR-02 18:54:15
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:no se puede conectar con el destino
+    ns main err code: 12560
+    TNS-12560: TNS:error del adaptador de protocolo
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found;  product=NETWORK; facility=TNS
+
+    nt secondary err code: 65
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=PORTATIL_FREDDY)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=DBO)(CID=(PROGRAM=C:\softeps\recaudo\Recaudo.exe)(HOST=PORTATIL_FREDDY)(USER=FREDDY))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 9.2.0.1.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production
+  Time: 20-SEP-2003 16:08:24
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay ningún listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=PORTATIL_FREDDY)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=DBO)(CID=(PROGRAM=C:\softeps\recaudo\Recaudo.exe)(HOST=PORTATIL_FREDDY)(USER=FREDDY))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 9.2.0.1.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production
+  Time: 20-SEP-2003 16:08:50
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay ningún listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=PORTATIL_FREDDY)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=DBO)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi6\Bin\delphi32.exe)(HOST=PORTATIL_FREDDY)(USER=FREDDY))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 9.2.0.1.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production
+  Time: 20-SEP-2003 16:09:10
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay ningún listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=PORTATIL_FREDDY)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=DBO)(CID=(PROGRAM=C:\softeps\recaudo\Recaudo.exe)(HOST=PORTATIL_FREDDY)(USER=FREDDY))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 9.2.0.1.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production
+  Time: 23-SEP-2003 19:33:51
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay ningún listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=PORTATIL_FREDDY)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=DBO)(CID=(PROGRAM=C:\softeps\recaudo\Recaudo.exe)(HOST=PORTATIL_FREDDY)(USER=FREDDY))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 9.2.0.1.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production
+  Time: 27-SEP-2003 10:18:54
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay ningún listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12514, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=PORTATIL_FREDDY)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=DBO)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi6\Bin\Delphi32.exe)(HOST=PORTATIL_FREDDY)(USER=FREDDY))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 9.2.0.1.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production
+  Time: 15-NOV-2003 09:12:02
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12564
+    TNS-12564: TNS:conexión rechazada
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12514, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=PORTATIL_FREDDY)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=DBO)(CID=(PROGRAM=C:\softeps\recaudo\Recaudo.exe)(HOST=PORTATIL_FREDDY)(USER=FREDDY))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 9.2.0.1.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production
+  Time: 15-NOV-2003 09:49:28
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12564
+    TNS-12564: TNS:conexión rechazada
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12514, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=PORTATIL_FREDDY)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=DBO)(CID=(PROGRAM=C:\softeps\recaudo\Recaudo.exe)(HOST=PORTATIL_FREDDY)(USER=FREDDY))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 9.2.0.1.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production
+  Time: 15-NOV-2003 09:49:37
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12564
+    TNS-12564: TNS:conexión rechazada
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=servidor)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=dbo)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi7\Bin\delphi32.exe)(HOST=SERVIDOR)(USER=Administrador))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 24-OCT-2004 16:21:01
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle)(ARGV0=oracledbo)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))'))(CONNECT_DATA=(SID=dbo)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi7\Bin\delphi32.exe)(HOST=SERVIDOR)(USER=Administrador))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 24-OCT-2004 16:21:01
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12560
+    TNS-12560: TNS:error del adaptador de protocolo
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Error del adaptador de protocolo
+    nt secondary err code: 2
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=servidor)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=dbo)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi7\Bin\delphi32.exe)(HOST=SERVIDOR)(USER=Administrador))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 12-MAR-2005 22:08:58
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no hay ningún listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No hay listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=BEQ)(PROGRAM=oracle)(ARGV0=oracledbo)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))'))(CONNECT_DATA=(SID=dbo)(CID=(PROGRAM=C:\Archivos de programa\Borland\Delphi7\Bin\delphi32.exe)(HOST=SERVIDOR)(USER=Administrador))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Oracle Bequeath NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 12-MAR-2005 22:08:58
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12560
+    TNS-12560: TNS:error del adaptador de protocolo
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Error del adaptador de protocolo
+    nt secondary err code: 2
+    nt OS err code: 0

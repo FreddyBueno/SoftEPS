@@ -1,0 +1,4 @@
+select * from AMENCAUT 
+where cd_regional = "201" AND
+id_autorizador = "iveth"
+ORDER BY no_solicitud "2425"

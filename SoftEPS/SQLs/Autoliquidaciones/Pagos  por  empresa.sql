@@ -1,0 +1,1 @@
+select * from autoliquidacion (index ixpago) where emp_tipo_doc = "tipo" and emp_numero_doc = "numero" order by fec_pago

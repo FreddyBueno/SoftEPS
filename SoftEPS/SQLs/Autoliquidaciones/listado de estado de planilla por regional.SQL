@@ -1,0 +1,7 @@
+select det_planilla_autoliquidacion.num_planilla,afi_tipo_doc,afi_numero_doc,det_estado,cod_regional,det_planilla_autoliquidacion.per_cotizacion,
+det_planilla_autoliquidacion.per_presentacion,AUTOLIQUIDACION.EMP_TIPO_DOC,EMP_NUMERO_DOC
+from det_planilla_autoliquidacion,autoliquidacion
+where det_planilla_autoliquidacion.num_planilla = autoliquidacion.num_planilla AND det_planilla_autoliquidacion.det_estado ="NRE"   AND (autoliquidacion.cod_regional ="150")
+
+
+

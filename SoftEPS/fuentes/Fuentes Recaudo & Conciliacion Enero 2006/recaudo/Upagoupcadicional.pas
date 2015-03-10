@@ -1,0 +1,2021 @@
+UNIT UPAGOUPCADICIONAL;
+
+INTERFACE
+
+USES
+  WINDOWS, MESSAGES, SYSUTILS, VARIANTS, CLASSES, GRAPHICS, CONTROLS, FORMS,
+  DIALOGS, STDCTRLS, MASK, DBCTRLS, COMCTRLS, GRIDS, MATH, EXTCTRLS,
+  BUTTONS, MENUS;
+
+TYPE
+  TFRMPAGOUPC = CLASS(TFORM)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    Label1: TLabel;
+    edtplanilla: TEdit;
+    spnuevo: TBitBtn;
+    GroupBox2: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label20: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label44: TLabel;
+    Label50: TLabel;
+    Label41: TLabel;
+    cbtipodocafiliado: TComboBox;
+    edtnumeroducafiliado: TEdit;
+    edtnomafiliado: TEdit;
+    cbtipodeclaracion: TComboBox;
+    dtfechapago: TDateTimePicker;
+    edtperiodo: TMaskEdit;
+    msperpresentacion: TMaskEdit;
+    cbtipodocempresa: TEdit;
+    ednumero: TEdit;
+    edtsucursal: TEdit;
+    edtnombreempresa: TEdit;
+    cbtipoaportante: TComboBox;
+    edtdigito: TEdit;
+    edtultimafechapago: TEdit;
+    BitBtn1: TBitBtn;
+    Label19: TLabel;
+    GroupBox1: TGroupBox;
+    Label47: TLabel;
+    TabSheet2: TTabSheet;
+    BitBtn2: TBitBtn;
+    TabSheet3: TTabSheet;
+    GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    Label5: TLabel;
+    Label8: TLabel;
+    Label6: TLabel;
+    Label9: TLabel;
+    Label7: TLabel;
+    Label10: TLabel;
+    edtvalupcpagar: TEdit;
+    edtaporteinteteres: TEdit;
+    edtnetoaportes: TEdit;
+    edtsaldoanterior: TEdit;
+    edtintereses: TEdit;
+    edttotalpagado: TEdit;
+    GroupBox11: TGroupBox;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label40: TLabel;
+    cbbanco: TDBLookupComboBox;
+    edtcuenta: TEdit;
+    edtvalefectivo: TEdit;
+    edtvalcheque: TEdit;
+    edttotalconsignado: TEdit;
+    sgdetabanco: TStringGrid;
+    pbrgrabardetalle: TProgressBar;
+    EDTCONSECUTIVO: TEdit;
+    EDTFECHARECAUDO: TEdit;
+    btgrabarplanilla: TBitBtn;
+    GroupBox5: TGroupBox;
+    Label25: TLabel;
+    Label45: TLabel;
+    Edit4: TEdit;
+    ComboBox1: TComboBox;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    GroupBox6: TGroupBox;
+    sgupc: TStringGrid;
+    GroupBox7: TGroupBox;
+    Label38: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    ComboBox2: TComboBox;
+    Edit1: TEdit;
+    Button4: TButton;
+    edtnombreafiliado: TEdit;
+    GroupBox8: TGroupBox;
+    cking: TCheckBox;
+    ckret: TCheckBox;
+    cktda: TCheckBox;
+    cktaa: TCheckBox;
+    ckvsp: TCheckBox;
+    ckvst: TCheckBox;
+    cksln: TCheckBox;
+    ckige: TCheckBox;
+    cklma: TCheckBox;
+    ckvac: TCheckBox;
+    GroupBox9: TGroupBox;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label31: TLabel;
+    eddias: TEdit;
+    edtsalariobase: TEdit;
+    edtcotizacionobligatorio: TEdit;
+    Agregar: TButton;
+    Button1: TButton;
+    Label26: TLabel;
+    ComboBox3: TComboBox;
+    Label29: TLabel;
+    Edit2: TEdit;
+    PROCEDURE EDTPLANILLAKEYPRESS(SENDER: TOBJECT; VAR KEY: CHAR);
+    PROCEDURE EDTPLANILLAEXIT(SENDER: TOBJECT);
+    PROCEDURE USUARIOS_UPC;
+    PROCEDURE FORMCREATE(SENDER: TOBJECT);
+    PROCEDURE CBTIPODECLARACIONEXIT(SENDER: TOBJECT);
+    PROCEDURE DTFECHAPAGOEXIT(SENDER: TOBJECT);
+    PROCEDURE EDTPERIODOEXIT(SENDER: TOBJECT);
+    PROCEDURE EDTNUMERODUCAFILIADOEXIT(SENDER: TOBJECT);
+    PROCEDURE FECHAS_PAGO;
+    PROCEDURE FORMCLOSE(SENDER: TOBJECT; VAR ACTION: TCLOSEACTION);
+    PROCEDURE CBBANCOCLICK(SENDER: TOBJECT);
+    PROCEDURE TABSHEET2ENTER(SENDER: TOBJECT);
+    PROCEDURE EDTINTERESESCHANGE(SENDER: TOBJECT);
+    PROCEDURE MSPERPRESENTACIONEXIT(SENDER: TOBJECT);
+    PROCEDURE EDTVALEFECTIVOCHANGE(SENDER: TOBJECT);
+    PROCEDURE EDTVALCHEQUECHANGE(SENDER: TOBJECT);
+    PROCEDURE NUEVO_REGISTRO;
+    PROCEDURE BTGRABARPLANILLACLICK(SENDER: TOBJECT);
+    PROCEDURE SPNUEVOCLICK(SENDER: TOBJECT);
+    PROCEDURE ESTADOS_PLANILLAS;
+    PROCEDURE APPMESSAGE(VAR MSG: TMSG; VAR HANDLED: BOOLEAN);
+    PROCEDURE VERIFICAR_COMPENSACION;
+    PROCEDURE CBBANCOENTER(SENDER: TOBJECT);
+    PROCEDURE CBBANCOEXIT(SENDER: TOBJECT);
+    PROCEDURE EDTINTERESESEXIT(SENDER: TOBJECT);
+    PROCEDURE CERRAR1CLICK(SENDER: TOBJECT);
+     FUNCTION EDAD(FECHANACIMIENTO: STRING): INTEGER;
+    PROCEDURE CBTIPODECLARACIONENTER(SENDER: TOBJECT);
+    PROCEDURE DTFECHAPAGOENTER(SENDER: TOBJECT);
+    PROCEDURE  EMPRESA_AFILIADO;
+    PROCEDURE EDTVALCHEQUEEXIT(SENDER: TOBJECT);
+    procedure edtvalefectivoExit(Sender: TObject);
+    procedure edtvalchequeEnter(Sender: TObject);
+    procedure sgdetabancoSelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure grabarplanilla;
+    procedure cbtipodocafiliadoExit(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    PROCEDURE CARGAR_PLANILLA;
+    procedure GroupBox3Enter(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+
+
+  PRIVATE
+    { PRIVATE DECLARATIONS }
+  PUBLIC
+    { PUBLIC DECLARATIONS }
+  END;
+
+VAR
+  FRMPAGOUPC: TFRMPAGOUPC;
+  ESTADO : BOOLEAN;
+  ESTADO_PLANILLA : STRING;
+  ENCONTRO: BOOLEAN;
+  ESTADO_USUARIO : STRING;
+  UPC : BOOLEAN;
+  EDADUPC : INTEGER;
+
+IMPLEMENTATION
+
+USES DTMODULO, UGLOBAL, UPRINCIPAL, UConsultaUPC1;
+
+{$R *.DFM}
+
+PROCEDURE TFRMPAGOUPC.EDTPLANILLAKEYPRESS(SENDER: TOBJECT;
+  VAR KEY: CHAR);
+BEGIN
+IF NOT (KEY IN ['0'..'9',#8])THEN
+      BEGIN
+      KEY := #0;
+      SHOWMESSAGE('DIGITE SOLO NUMEROS');
+      END;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.EDTPLANILLAEXIT(SENDER: TOBJECT);
+BEGIN
+IF (trim(EDTPLANILLA.TEXT) > '0')  THEN
+BEGIN
+    IF (CBTIPODOCAFILIADO.ITEMINDEX = -1) AND ((EDTNUMERODUCAFILIADO.TEXT = '')or (EDTNUMERODUCAFILIADO.TEXT = '0')) THEN
+    BEGIN
+    DATAMODULE1.QRYAUTOLIQUIDACION.CLOSE;
+    DATAMODULE1.QRYAUTOLIQUIDACION.SQL.CLEAR;
+    DATAMODULE1.QRYAUTOLIQUIDACION.SQL.ADD('SELECT * FROM AUTOLIQUIDACION  WHERE  NUM_PLANILLA  = :PLANILLA');
+    DATAMODULE1.QRYAUTOLIQUIDACION.Parameters[0].VALUE := EDTPLANILLA.TEXT;
+    DATAMODULE1.QRYAUTOLIQUIDACION.OPEN;
+            IF DATAMODULE1.QRYAUTOLIQUIDACION.RECORDCOUNT > 0 THEN
+            BEGIN
+                DATAMODULE1.QRYPAGOUPC.CLOSE;
+                DATAMODULE1.QRYPAGOUPC.SQL.CLEAR;
+                DATAMODULE1.QRYPAGOUPC.SQL.ADD('SELECT * FROM DET_PAGO_UPC_ADICIONAL WHERE NUM_PLANILLA =:"NUM_PLANILLA"');
+                DATAMODULE1.QRYPAGOUPC.Parameters[0].VALUE := TRIM(EDTPLANILLA.TEXT);
+                DATAMODULE1.QRYPAGOUPC.OPEN;
+                  IF DATAMODULE1.QRYPAGOUPC.RECORDCOUNT > 0 THEN
+                  BEGIN
+                  IF MESSAGEDLG ('EL NUMERO DE PLANILLA  YA  ESTA  DIGITADA  DESEA  CONSULTARLA?', MTCONFIRMATION, [MBYES, MBNO], 0) = MRYES THEN
+                 BEGIN
+                 CARGAR_PLANILLA;
+                 END
+                 ELSE  EDTPLANILLA.SETFOCUS;
+                 END
+                 ELSE
+                    IF DATAMODULE1.QRYPAGOUPC.RECORDCOUNT = 0 THEN
+                    BEGIN
+                    SHOWMESSAGE('ESTA  NUMERO DE PLANILLA  ESTA  DIGITADA Y  NO  ES  DE UPC ADICIONAL');
+                    EDTPLANILLA.TEXT := '0';
+                    EDTPLANILLA.SETFOCUS;
+                    EXIT;
+                    END;
+               END
+             ELSE IF DATAMODULE1.QRYAUTOLIQUIDACION.RECORDCOUNT = 0 THEN
+             BEGIN
+
+             END;
+    END;
+    END;
+
+    IF EDTPLANILLA.TEXT = '' THEN
+    BEGIN
+    SHOWMESSAGE('DIGITE  EL NUMERO DE PLANILLA CON EL QUE SE  REALIZO EL APORTE');
+    //LIMPIAR_PLANILLA;
+    EDTPLANILLA.SETFOCUS;
+    END;
+    IF EDTPLANILLA.TEXT = '0' THEN
+    BEGIN
+    SHOWMESSAGE('DIGITE  EL NUMERO DE PLANILLA CON EL QUE SE  REALIZO EL APORTE ');
+    //LIMPIAR_PLANILLA;
+    EDTPLANILLA.SETFOCUS;
+END;
+
+
+END;
+
+
+
+PROCEDURE TFRMPAGOUPC.USUARIOS_UPC;
+VAR I,X : INTEGER;
+    ENCONTRO  : BOOLEAN;
+    ANO : STRING;
+    valortotal : double;
+BEGIN
+IF (CBTIPODOCAFILIADO.TEXT <> '') AND  (EDTNUMERODUCAFILIADO.TEXT >'0') THEN
+  BEGIN
+valortotal := 0;
+        EDTVALUPCPAGAR.TEXT := '0';
+        DATAMODULE1.QRYUPC.CLOSE;
+        DATAMODULE1.QRYUPC.SQL.CLEAR;
+        DATAMODULE1.QRYUPC.SQL.ADD('SELECT TIP_DOCUMENTO_BEN,NUM_DOCUMENTO_BEN,COD_SEXO,TIP_DOCUMENTO_COT,NUM_DOCUMENTO_COT,FEC_NACIMIENTO,');
+        DATAMODULE1.QRYUPC.SQL.ADD('PRI_APELLIDO,SEG_APELLIDO,PRI_NOMBRE,SEG_NOMBRE');
+        DATAMODULE1.QRYUPC.SQL.ADD('FROM AFILIADOS,RELACION_AFILIADOS');
+        DATAMODULE1.QRYUPC.SQL.ADD('WHERE COD_TIPO_AFIL=:"EST" AND TIP_DOCUMENTO_BEN =  TIP_DOCUMENTO AND NUM_DOCUMENTO_BEN = NUM_DOCUMENTO AND TIP_DOCUMENTO_COT =  :"TIPO" AND NUM_DOCUMENTO_COT = :"NUMERO" ');
+        DATAMODULE1.QRYUPC.SQL.ADD('AND ((FEC_INCLUSION_NOV <= :"FECHA") OR (FEC_INCLUSION_NOV <= :"FECHAI")) AND (((FEC_EXCLUSION_NOV >= :"FECHAF") OR (FEC_EXCLUSION_NOV >= :"FECHAFI"))OR FEC_EXCLUSION_NOV  IS NULL)');
+        DATAMODULE1.QRYUPC.Parameters[0].VALUE := 'A';
+        DATAMODULE1.QRYUPC.Parameters[1].VALUE := CBTIPODOCAFILIADO.TEXT;
+        DATAMODULE1.QRYUPC.Parameters[2].VALUE := EDTNUMERODUCAFILIADO.TEXT;
+        DATAMODULE1.QRYUPC.Parameters[3].VALUE :=DATAMODULE1.FDOM(STRTODATE('01/'+ EDTPERIODO.TEXT));
+        DATAMODULE1.QRYUPC.Parameters[4].VALUE := DATAMODULE1.LDOM(STRTODATE('01/'+ EDTPERIODO.TEXT));
+        DATAMODULE1.QRYUPC.Parameters[5].VALUE := DATAMODULE1.FDOM(STRTODATE('01/'+ EDTPERIODO.TEXT));
+        DATAMODULE1.QRYUPC.Parameters[6].VALUE := DATAMODULE1.LDOM(STRTODATE('01/'+ EDTPERIODO.TEXT));
+        DATAMODULE1.QRYUPC.OPEN;
+         IF DATAMODULE1.QRYUPC.RECORDCOUNT > 0 THEN
+         BEGIN
+                  FOR I := 1 TO DATAMODULE1.QRYUPC.RECORDCOUNT DO
+                  BEGIN
+                  ENCONTRO := FALSE;
+                  // VERIFICAR  QUE  EL  USUARIO NO ESTE  EN LA  LISTA  SELECIONADA
+                        FOR X := 1 TO SGUPC.ROWCOUNT -2 DO
+                        BEGIN
+                              IF  ((TRIM(SGUPC.CELLS[2,X]) = TRIM(DATAMODULE1.QRYUPCTIP_DOCUMENTO_BEN.VALUE)) AND  (TRIM(SGUPC.CELLS[3,X]) = TRIM(DATAMODULE1.QRYUPCNUM_DOCUMENTO_BEN.VALUE))) THEN
+                              BEGIN
+                              ENCONTRO := TRUE;
+                              END;
+                        END;
+                  IF ENCONTRO = FALSE THEN
+                  BEGIN
+                  EDADUPC := (EDAD(DATETOSTR(DATAMODULE1.QRYUPCFEC_NACIMIENTO.VALUE)));
+                           IF EDADUPC < 0 THEN
+                           BEGIN
+                             EDADUPC := EDADUPC +  EDADUPC
+                           END;
+                  DATAMODULE1.QRYDETALLEUPC.CLOSE;
+                  DATAMODULE1.QRYDETALLEUPC.SQL.CLEAR;
+                  DATAMODULE1.QRYDETALLEUPC.SQL.ADD('SELECT DET_PAGO_UPC_ADICIONAL.*  FROM DET_PAGO_UPC_ADICIONAL  WHERE  PER_COTIZACION = :"PERIODO" AND  AFI_TIP_DOC_ADICIONAL = :"TIPO" AND AFI_NUM_DOC_ADICIONAL = :"NUMERO"');
+                  DATAMODULE1.QRYDETALLEUPC.Parameters[0].VALUE := EDTPERIODO.TEXT;
+                  DATAMODULE1.QRYDETALLEUPC.Parameters[1].VALUE := TRIM(DATAMODULE1.QRYUPCTIP_DOCUMENTO_BEN.VALUE);
+                  DATAMODULE1.QRYDETALLEUPC.Parameters[2].VALUE := TRIM(DATAMODULE1.QRYUPCNUM_DOCUMENTO_BEN.VALUE);
+                  DATAMODULE1.QRYDETALLEUPC.OPEN;
+                     IF DATAMODULE1.QRYDETALLEUPC.RECORDCOUNT > 0 THEN
+                     BEGIN
+                     SHOWMESSAGE('EL AFILADO CON PAGO  DE  UPC EN ESTE  PERIODO EN LA  PLANILLA : ' + DATAMODULE1.QRYDETALLEUPCNUM_PLANILLA.VALUE + ' POR BENEFICIARIO   ADICIONAL CON DOCUMENTO ' +DATAMODULE1.QRYDETALLEUPCAFI_TIP_DOC_ADICIONAL.VALUE + ' ' + DATAMODULE1.QRYDETALLEUPCAFI_NUM_DOC_ADICIONAL.VALUE );
+                     DATAMODULE1.QRYDETALLEUPC.FINDNEXT;
+                     END ELSE
+                          IF DATAMODULE1.QRYDETALLEUPC.RECORDCOUNT = 0 THEN
+                          BEGIN
+                          SGUPC.ROWCOUNT := SGUPC.ROWCOUNT +1;
+                          SGUPC.CELLS[0,SGUPC.ROWCOUNT -2] := DATAMODULE1.QRYUPCTIP_DOCUMENTO_COT.VALUE;
+                          SGUPC.CELLS[1,SGUPC.ROWCOUNT -2] := DATAMODULE1.QRYUPCNUM_DOCUMENTO_COT.VALUE;
+                          SGUPC.CELLS[2,SGUPC.ROWCOUNT -2] := DATAMODULE1.QRYUPCTIP_DOCUMENTO_BEN.VALUE;
+                          SGUPC.CELLS[3,SGUPC.ROWCOUNT -2] := DATAMODULE1.QRYUPCNUM_DOCUMENTO_BEN.VALUE;
+                          SGUPC.CELLS[4,SGUPC.ROWCOUNT -2] := DATAMODULE1.QRYUPCPRI_APELLIDO.VALUE + ' ' + DATAMODULE1.QRYUPCSEG_APELLIDO.VALUE + ' ' + DATAMODULE1.QRYUPCPRI_NOMBRE.VALUE + ' ' + DATAMODULE1.QRYUPCSEG_NOMBRE.VALUE;
+                          SGUPC.CELLS[5,SGUPC.ROWCOUNT -2] := DATAMODULE1.QRYUPCCOD_SEXO.VALUE;
+                          SGUPC.CELLS[6,SGUPC.ROWCOUNT -2] := INTTOSTR(EDADUPC);
+                          SGUPC.CELLS[8,SGUPC.ROWCOUNT -2] := 'P';
+                             IF  SGUPC.CELLS[0,SGUPC.ROWCOUNT -2] <> '' THEN
+                             BEGIN
+                             ANO:=(FORMATDATETIME('YYYY',STRTODATE('01/' + EDTPERIODO.TEXT)));
+                             SGUPC.CELLS[7,SGUPC.ROWCOUNT -2] := floatTOSTR(DATAMODULE1.valorupcpagar(EDADUPC,EDTPERIODO.TEXT,DATAMODULE1.QRYUPCCOD_SEXO.VALUE));
+                             valortotal := valortotal +  (DATAMODULE1.valorupcpagar(EDADUPC,EDTPERIODO.TEXT,DATAMODULE1.QRYUPCCOD_SEXO.VALUE));
+
+                    {                FOR X := 1 TO SGUPC.ROWCOUNT -2 DO
+                                    BEGIN
+                                    EDTVALUPCPAGAR.TEXT := FLOATTOSTR((STRTOFLOAT(EDTVALUPCPAGAR.TEXT) + STRTOFLOAT(SGUPC.CELLS[7,X])));
+                                    EDTNETOAPORTES.TEXT := EDTVALUPCPAGAR.TEXT;
+                                    EDTAPORTEINTETERES.TEXT := EDTVALUPCPAGAR.TEXT;
+                                    EDTTOTALPAGADO.TEXT := EDTVALUPCPAGAR.TEXT;
+                                    EDTINTERESES.TEXT := '0';
+                                    EDTSALDOANTERIOR.TEXT := '0';
+                                    END;   }
+                             END;
+                          end;
+                     end;
+                     DATAMODULE1.QRYUPC.FindNext;
+                  end;
+
+                                    EDTVALUPCPAGAR.TEXT := FLOATTOSTR(valortotal);
+                                    EDTNETOAPORTES.TEXT := EDTVALUPCPAGAR.TEXT;
+                                    EDTAPORTEINTETERES.TEXT := EDTVALUPCPAGAR.TEXT;
+                                    EDTTOTALPAGADO.TEXT := EDTVALUPCPAGAR.TEXT;
+                                    EDTINTERESES.TEXT := '0';
+                                    EDTSALDOANTERIOR.TEXT := '0';
+
+                IF SGUPC.ROWCOUNT = 2 THEN
+                BEGIN
+                SHOWMESSAGE('AFILIADO  NO TIENE  BENEFICIARIOS  ADICIONALES  PENDIENTES DE  PAGO EN ESTE  PERIODO');
+
+   EDTNUMERODUCAFILIADO.TEXT := '0';
+   CBTIPODOCAFILIADO.ITEMINDEX := -1;
+   // LIMPIAR  CONSOLIDADO DE LA  PLANILLA
+   EDTNETOAPORTES.TEXT := '0';
+   EDTINTERESES.TEXT := '0';
+   EDTAPORTEINTETERES.TEXT := '0';
+   EDTSALDOANTERIOR.TEXT := '0';
+   EDTTOTALPAGADO.TEXT := '0';
+   EDTVALCHEQUE.TEXT := '0';
+   EDTVALEFECTIVO.TEXT := '0';
+   MSPERPRESENTACION.TEXT := GLPRESENTACION;
+   MSPERPRESENTACION.ENABLED := false;
+
+
+   FOR I := 0 TO SGUPC.ROWCOUNT DO
+     BEGIN
+                   SGUPC.CELLS[0,1]:='';
+                   SGUPC.CELLS[1,1]:='';
+                   SGUPC.CELLS[2,1]:='';
+                   SGUPC.CELLS[3,1]:='';
+                   SGUPC.CELLS[4,1]:='';
+                   SGUPC.CELLS[5,1]:='';
+                   SGUPC.CELLS[6,1]:='';
+                   SGUPC.CELLS[7,1]:='';
+                   SGUPC.CELLS[8,1]:='';
+   END;
+   SGUPC.ROWCOUNT := 2;
+
+    FOR I := 0 TO sgdetabanco.ROWCOUNT DO
+     BEGIN
+                   sgdetabanco.CELLS[0,1]:='';
+                   sgdetabanco.CELLS[1,1]:='';
+                   sgdetabanco.CELLS[2,1]:='';
+   END;
+   sgdetabanco.ROWCOUNT := 2;
+
+
+
+   // LIMPIAR  ENCABEZADO
+    EDTPLANILLA.TEXT := '0';
+    EDNUMERO.TEXT := '0';
+    EDTNOMBREEMPRESA.TEXT := '0';
+    CBTIPODECLARACION.ITEMINDEX := -1;
+    EDTPERIODO.TEXT := '__/____';
+    BTGRABARPLANILLA.ENABLED := FALSE;
+    PBRGRABARDETALLE.MIN := 0;
+    PBRGRABARDETALLE.POSITION := 0;
+    PBRGRABARDETALLE.MAX := 0;
+    DTFECHAPAGO.DATE := STRTODATE(GLDATE);
+    ESTADO_PLANILLA := '';
+    ESTADO_USUARIO := '';
+    CBTIPOAPORTANTE.ITEMINDEX := -1;
+    EDTDIGITO.TEXT := '0';
+    EDTULTIMAFECHAPAGO.TEXT := '0';
+    EDTVALUPCPAGAR.TEXT := '0';
+    CBTIPODOCEMPRESA.TEXT := '';
+    EDTPLANILLA.text := '0';
+   EDTNUMERODUCAFILIADO.ENABLED := TRUE;
+   CBTIPODOCAFILIADO.ENABLED := TRUE;
+   edtnomafiliado.Text := '';
+
+   EDTSUCURSAL.ENABLED := TRUE;
+   // LIMPIAR  CONSOLIDADO DE LA  PLANILLA
+
+
+
+   EDTNETOAPORTES.ENABLED := TRUE;
+   EDTINTERESES.ENABLED := TRUE;
+   EDTSALDOANTERIOR.ENABLED := TRUE;
+   EDTTOTALPAGADO.ENABLED := TRUE;
+   EDTVALCHEQUE.ENABLED := TRUE;
+   CBBANCO.ENABLED := TRUE;
+   EDTVALEFECTIVO.ENABLED := TRUE;
+
+   // LIMPIAR  ENCABEZADO
+    EDTPLANILLA.ENABLED := TRUE;
+    CBTIPODOCEMPRESA.ENABLED := TRUE;
+    EDTNOMBREEMPRESA.ENABLED := TRUE;
+    CBTIPODECLARACION.ENABLED := TRUE;
+    EDTPERIODO.ENABLED := TRUE;
+    BTGRABARPLANILLA.ENABLED := FALSE;
+    DTFECHAPAGO.ENABLED := TRUE;
+    EDTPERIODO.ENABLED := TRUE;
+
+                END;
+              end;
+      {    IF  EDTVALUPCPAGAR.TEXT  = '0' THEN
+          BEGIN
+          SHOWMESSAGE('AFILIADO  NO TIENE  BENEFICIARIOS  ADICIONALES  PENDIENTES DE  PAGO EN ESTE  PERIODO');
+          FRMPAGOUPC.PAGECONTROL1.ActivePageIndex := 0;
+          END; }
+
+
+         IF DATAMODULE1.QRYUPC.RECORDCOUNT = 0 THEN
+         BEGIN
+          SHOWMESSAGE('AFILIADO  NO TIENE  BENEFICIARIOS  ADICIONALES  PENDIENTES  DE PAGO ESTE  PERIODO PORQUE ESTAN RETIRADOS');
+          FRMPAGOUPC.PAGECONTROL1.ActivePageIndex := 0;
+           EDTNUMERODUCAFILIADO.TEXT := '0';
+   CBTIPODOCAFILIADO.ITEMINDEX := -1;
+   // LIMPIAR  CONSOLIDADO DE LA  PLANILLA
+   EDTNETOAPORTES.TEXT := '0';
+   EDTINTERESES.TEXT := '0';
+   EDTAPORTEINTETERES.TEXT := '0';
+   EDTSALDOANTERIOR.TEXT := '0';
+   EDTTOTALPAGADO.TEXT := '0';
+   EDTVALCHEQUE.TEXT := '0';
+   EDTVALEFECTIVO.TEXT := '0';
+   MSPERPRESENTACION.TEXT := GLPRESENTACION;
+   MSPERPRESENTACION.ENABLED := false;
+
+
+   FOR I := 0 TO SGUPC.ROWCOUNT DO
+     BEGIN
+                   SGUPC.CELLS[0,1]:='';
+                   SGUPC.CELLS[1,1]:='';
+                   SGUPC.CELLS[2,1]:='';
+                   SGUPC.CELLS[3,1]:='';
+                   SGUPC.CELLS[4,1]:='';
+                   SGUPC.CELLS[5,1]:='';
+                   SGUPC.CELLS[6,1]:='';
+                   SGUPC.CELLS[7,1]:='';
+                   SGUPC.CELLS[8,1]:='';
+   END;
+   SGUPC.ROWCOUNT := 2;
+
+    FOR I := 0 TO sgdetabanco.ROWCOUNT DO
+     BEGIN
+                   sgdetabanco.CELLS[0,1]:='';
+                   sgdetabanco.CELLS[1,1]:='';
+                   sgdetabanco.CELLS[2,1]:='';
+   END;
+   sgdetabanco.ROWCOUNT := 2;
+
+   sgdetabanco.CELLS[0,0]:='COD BANCO';
+   sgdetabanco.CELLS[1,0]:='NUMERO DE CUENTA';
+   sgdetabanco.CELLS[2,0]:='VALOR';
+
+
+
+   // LIMPIAR  ENCABEZADO
+    EDTPLANILLA.TEXT := '0';
+    EDNUMERO.TEXT := '0';
+    EDTNOMBREEMPRESA.TEXT := '0';
+    CBTIPODECLARACION.ITEMINDEX := -1;
+    EDTPERIODO.TEXT := '__/____';
+    BTGRABARPLANILLA.ENABLED := FALSE;
+    PBRGRABARDETALLE.MIN := 0;
+    PBRGRABARDETALLE.POSITION := 0;
+    PBRGRABARDETALLE.MAX := 0;
+    DTFECHAPAGO.DATE := STRTODATE(GLDATE);
+    ESTADO_PLANILLA := '';
+    ESTADO_USUARIO := '';
+    CBTIPOAPORTANTE.ITEMINDEX := -1;
+    EDTDIGITO.TEXT := '0';
+    EDTULTIMAFECHAPAGO.TEXT := '0';
+    EDTVALUPCPAGAR.TEXT := '0';
+    CBTIPODOCEMPRESA.TEXT := '';
+    EDTPLANILLA.text := '0';
+   EDTNUMERODUCAFILIADO.ENABLED := TRUE;
+   CBTIPODOCAFILIADO.ENABLED := TRUE;
+   edtnomafiliado.Text := '';
+   EDTSUCURSAL.ENABLED := TRUE;
+   // LIMPIAR  CONSOLIDADO DE LA  PLANILLA
+   EDTNETOAPORTES.ENABLED := TRUE;
+   EDTINTERESES.ENABLED := TRUE;
+   EDTSALDOANTERIOR.ENABLED := TRUE;
+   EDTTOTALPAGADO.ENABLED := TRUE;
+   EDTVALCHEQUE.ENABLED := TRUE;
+   CBBANCO.ENABLED := TRUE;
+   EDTVALEFECTIVO.ENABLED := TRUE;
+
+   // LIMPIAR  ENCABEZADO
+    EDTPLANILLA.ENABLED := TRUE;
+    CBTIPODOCEMPRESA.ENABLED := TRUE;
+    EDTNOMBREEMPRESA.ENABLED := TRUE;
+    CBTIPODECLARACION.ENABLED := TRUE;
+    EDTPERIODO.ENABLED := TRUE;
+    BTGRABARPLANILLA.ENABLED := FALSE;
+    DTFECHAPAGO.ENABLED := TRUE;
+    EDTPERIODO.ENABLED := TRUE;
+   end;
+  end;
+ END;
+
+PROCEDURE TFRMPAGOUPC.FORMCREATE(SENDER: TOBJECT);
+BEGIN
+APPLICATION.ONMESSAGE := APPMESSAGE;
+WITH SGUPC DO
+          BEGIN
+        CELLS[0,0]:='TIP_DOC';
+        CELLS[1,0]:='NUM_DOC';
+        CELLS[2,0]:='TIPO';
+        CELLS[3,0]:='DOCUMENTO';
+        CELLS[4,0]:='NOMBRE';
+        CELLS[5,0]:='SEXO';
+        CELLS[6,0]:='EDAD';
+        CELLS[7,0]:='VALOR UPC';
+        CELLS[8,0]:='ESTADO';
+  END;
+
+ WITH sgdetabanco DO
+          BEGIN
+        CELLS[0,0]:='CODIGO BANCO';
+        CELLS[1,0]:='NUM. CHEQUE';
+        CELLS[2,0]:='VALOR';
+ END;
+
+         DTFECHAPAGO.DATE := STRTODATE(GLDATE);
+
+
+END;
+PROCEDURE TFRMPAGOUPC.CBTIPODECLARACIONEXIT(SENDER: TOBJECT);
+BEGIN
+IF CBTIPODECLARACION.ITEMINDEX >= 0 THEN
+BEGIN
+EDTPERIODO.CLEAR;
+DTFECHAPAGO.DATE := STRTODATE(GLDATE)+1;
+        IF CBTIPODECLARACION.ITEMINDEX = 0 THEN
+        BEGIN
+        MSPERPRESENTACION.ENABLED := FALSE;
+        MSPERPRESENTACION.TEXT := GLPRESENTACION;
+        EDTPERIODO.ENABLED := FALSE;
+        EDTPERIODO.TEXT := GLPRESENTACION;
+        EMPRESA_AFILIADO
+        END
+        ELSE
+                IF CBTIPODECLARACION.ITEMINDEX = 1 THEN
+                BEGIN
+                EDTPERIODO.CLEAR;
+                MSPERPRESENTACION.ENABLED := FALSE;
+                MSPERPRESENTACION.TEXT := GLPRESENTACION;
+                EDTPERIODO.ENABLED := TRUE;
+                EMPRESA_AFILIADO
+                END;
+END;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.DTFECHAPAGOEXIT(SENDER: TOBJECT);
+BEGIN
+IF DTFECHAPAGO.DATE  = STRTODATE(GLDATE)+1 THEN
+BEGIN
+SHOWMESSAGE('DIGITE  LA FECHA DE  PAGO DE  LA UPC POR SEPARADO');
+DTFECHAPAGO.SETFOCUS
+END
+ELSE
+  IF DTFECHAPAGO.DATE > STRTODATE(GLDATE) THEN
+  BEGIN
+  SHOWMESSAGE('LA  FECHA  DE  PAGO NO PUDE SER  MAYOR A LA FECHA ACTUAL');
+  DTFECHAPAGO.SETFOCUS;
+  DTFECHAPAGO.DATE := STRTODATE(GLDATE)+1;
+ END
+ ELSE IF DTFECHAPAGO.DATE <= STRTODATE(GLDATE) THEN
+          BEGIN
+          IF CBTIPODECLARACION.ITEMINDEX = 0 THEN
+          BEGIN
+           USUARIOS_UPC;
+           FRMPAGOUPC.PAGECONTROL1.ACTIVEPAGE := TABSHEET2;
+           END;
+       END;
+END;
+
+PROCEDURE TFRMPAGOUPC.EDTPERIODOEXIT(SENDER: TOBJECT);
+VAR FECHACOMPENSA,FECHAPAGO : TDATE;
+BEGIN
+TRY
+FECHACOMPENSA  := STRTODATE('01/' + EDTPERIODO.TEXT);
+IF FECHACOMPENSA > STRTODATE(GLCREACIONEPS) THEN
+BEGIN
+
+     IF  STRTODATE('01/' + EDTPERIODO.TEXT) >= STRTODATE('01/' + MSPERPRESENTACION.TEXT) THEN
+     BEGIN
+     SHOWMESSAGE('EN LA ADICION EL PERIODO DE  COTIZACIONES  NO PUDE SER MAYOR AL DE  PRESENTACION');
+     END
+     ELSE  IF  STRTODATE('01/' + EDTPERIODO.TEXT) < STRTODATE('01/' + MSPERPRESENTACION.TEXT) THEN
+           BEGIN
+           VERIFICAR_COMPENSACION;
+           USUARIOS_UPC;
+           FRMPAGOUPC.PAGECONTROL1.ActivePageIndex := 1;
+           END;
+END
+ ELSE IF FECHACOMPENSA <= STRTODATE(GLCREACIONEPS) THEN
+      BEGIN
+      SHOWMESSAGE(' EL PERIODO NO  PUEDE  SER  MENOR A  01/1995');
+      EDTPERIODO.SETFOCUS;
+    END;
+
+
+
+  EXCEPT  // MENASJE  DE  LOS ERRORES
+  //SHOWMESSAGE('ERROR AL CALCULAR LIQUIDACION');
+   ON E: ECONVERTERROR DO
+    BEGIN
+     E.MESSAGE := 'EL PERIODO  ESTA MAL  DIGITADO O IMCOMPLETO';
+       EDTPERIODO.SETFOCUS;
+      RAISE;
+    END;
+   END;
+
+END;
+
+
+PROCEDURE TFRMPAGOUPC.EDTNUMERODUCAFILIADOEXIT(SENDER: TOBJECT);
+BEGIN
+IF (EDTNUMERODUCAFILIADO.Text = '') or (edtnumeroducafiliado.Text = '0') then
+  begin
+  ShowMessage('Digite el numero de  documento del afiliados cotizante');
+   BitBtn1.SetFocus;
+   exit;
+   end;
+IF (CBTIPODOCAFILIADO.ITEMINDEX > -1) AND (EDTNUMERODUCAFILIADO.TEXT > '0') THEN
+BEGIN
+DATAMODULE1.QRYAFILIADOS.CLOSE;
+DATAMODULE1.QRYAFILIADOS.SQL.CLEAR;
+DATAMODULE1.QRYAFILIADOS.SQL.ADD('SELECT  TIP_DOCUMENTO_EMP, NUM_DOCUMENTO_EMP,TIP_DOCUMENTO_AFI, NUM_DOCUMENTO_AFI,PRI_APELLIDO,SEG_APELLIDO,PRI_NOMBRE,SEG_NOMBRE, VAL_SUELDO_AFIL,FEC_INGRESO_UNI,FEC_EGRESO_UNI,AFILIADOS_EMPRESAS.COD_ESTADO,FEC_NACIMIENTO,COD_SEXO,T1.COD_MODALIDAD_TRA');
+DATAMODULE1.QRYAFILIADOS.SQL.ADD('FROM AFILIADOS_EMPRESAS,AFILIADOS T1');
+DATAMODULE1.QRYAFILIADOS.SQL.ADD('WHERE TIP_DOCUMENTO_AFI = TIP_DOCUMENTO AND NUM_DOCUMENTO_AFI = NUM_DOCUMENTO AND TIP_DOCUMENTO_AFI = :"TIPO" AND NUM_DOCUMENTO_AFI = :"NUMERO" AND FEC_EGRESO_UNI IS NULL');
+DATAMODULE1.QRYAFILIADOS.Parameters[0].VALUE := TRIM(CBTIPODOCAFILIADO.TEXT);
+DATAMODULE1.QRYAFILIADOS.Parameters[1].VALUE := TRIM(EDTNUMERODUCAFILIADO.TEXT);
+DATAMODULE1.QRYAFILIADOS.OPEN;
+
+IF  DATAMODULE1.QRYAFILIADOS.RECORDCOUNT > 0 THEN
+    BEGIN
+
+    EDTNOMAFILIADO.TEXT := (DATAMODULE1.QRYAFILIADOSPRI_APELLIDO.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSSEG_APELLIDO.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSPRI_NOMBRE.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSSEG_NOMBRE.VALUE);
+    CBTIPODOCEMPRESA.TEXT := DATAMODULE1.QRYAFILIADOSTIP_DOCUMENTO_EMP.VALUE;
+    EDNUMERO.TEXT := DATAMODULE1.QRYAFILIADOSNUM_DOCUMENTO_EMP.VALUE;
+    EDTSUCURSAL.TEXT := '0';
+    DATAMODULE1.QRYEMPRESAUPC.CLOSE;
+    DATAMODULE1.QRYEMPRESAUPC.SQL.CLEAR;
+    DATAMODULE1.QRYEMPRESAUPC.SQL.ADD('SELECT RELACION_AFILIADOS.* FROM  RELACION_AFILIADOS,AFILIADOS WHERE TIP_DOCUMENTO_COT = :"TIPO" AND  NUM_DOCUMENTO_COT = :"NUMERO" ');
+    DATAMODULE1.QRYEMPRESAUPC.SQL.ADD('AND TIP_DOCUMENTO_BEN = TIP_DOCUMENTO AND  NUM_DOCUMENTO_BEN = NUM_DOCUMENTO AND COD_TIPO_AFIL = :"TIPOAFIL"');
+    DATAMODULE1.QRYEMPRESAUPC.Parameters[0].VALUE := CBTIPODOCAFILIADO.TEXT;
+    DATAMODULE1.QRYEMPRESAUPC.Parameters[1].VALUE := EDTNUMERODUCAFILIADO.TEXT;
+    DATAMODULE1.QRYEMPRESAUPC.Parameters[2].VALUE := 'A';
+       DATAMODULE1.QRYEMPRESAUPC.OPEN;
+        IF DATAMODULE1.QRYEMPRESAUPC.RECORDCOUNT = 0 THEN
+        BEGIN
+        SHOWMESSAGE('EL AFILIADO COTIZANTE  NO TIENE  NINGUN BENEFICIARIO  ADICIONAL' );
+        BitBtn1.SetFocus;
+        EDTPLANILLA.SETFOCUS;
+        END
+    END
+    ELSE IF  DATAMODULE1.QRYAFILIADOS.RECORDCOUNT = 0 THEN
+    BEGIN
+// AFILIADO  EXCLUIDO
+   DATAMODULE1.QRYAFILIADOS.CLOSE;
+   DATAMODULE1.QRYAFILIADOS.SQL.CLEAR;
+   DATAMODULE1.QRYAFILIADOS.SQL.ADD('SELECT  TIP_DOCUMENTO_EMP, NUM_DOCUMENTO_EMP,TIP_DOCUMENTO_AFI, NUM_DOCUMENTO_AFI,PRI_APELLIDO,SEG_APELLIDO,PRI_NOMBRE,SEG_NOMBRE, VAL_SUELDO_AFIL,FEC_INGRESO_UNI,FEC_EGRESO_UNI,AFILIADOS_EMPRESAS.COD_ESTADO,FEC_NACIMIENTO,COD_SEXO,T1.COD_MODALIDAD_TRA');
+   DATAMODULE1.QRYAFILIADOS.SQL.ADD('FROM AFILIADOS_EMPRESAS,AFILIADOS T1');
+   DATAMODULE1.QRYAFILIADOS.SQL.ADD('WHERE TIP_DOCUMENTO_AFI = TIP_DOCUMENTO AND NUM_DOCUMENTO_AFI = NUM_DOCUMENTO AND TIP_DOCUMENTO_AFI = :"TIPO" AND NUM_DOCUMENTO_AFI = :"NUMERO"');
+   DATAMODULE1.QRYAFILIADOS.Parameters[0].VALUE := TRIM(CBTIPODOCAFILIADO.TEXT);
+   DATAMODULE1.QRYAFILIADOS.Parameters[1].VALUE := TRIM(EDTNUMERODUCAFILIADO.TEXT);
+   DATAMODULE1.QRYAFILIADOS.OPEN;
+   IF  DATAMODULE1.QRYAFILIADOS.RECORDCOUNT > 0 THEN
+   BEGIN
+   VERIFICAR_COMPENSACION;
+    EDTNOMAFILIADO.TEXT := (DATAMODULE1.QRYAFILIADOSPRI_APELLIDO.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSSEG_APELLIDO.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSPRI_NOMBRE.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSSEG_NOMBRE.VALUE);
+    CBTIPODOCEMPRESA.TEXT := DATAMODULE1.QRYAFILIADOSTIP_DOCUMENTO_EMP.VALUE;
+    EDNUMERO.TEXT := DATAMODULE1.QRYAFILIADOSNUM_DOCUMENTO_EMP.VALUE;
+    EDTSUCURSAL.TEXT := '0';
+    DATAMODULE1.QRYEMPRESAUPC.CLOSE;
+    DATAMODULE1.QRYEMPRESAUPC.SQL.CLEAR;
+    DATAMODULE1.QRYEMPRESAUPC.SQL.ADD('SELECT RELACION_AFILIADOS.* FROM  RELACION_AFILIADOS,AFILIADOS WHERE TIP_DOCUMENTO_COT = :"TIPO" AND  NUM_DOCUMENTO_COT = :"NUMERO" ');
+    DATAMODULE1.QRYEMPRESAUPC.SQL.ADD('AND TIP_DOCUMENTO_BEN = TIP_DOCUMENTO AND  NUM_DOCUMENTO_BEN = NUM_DOCUMENTO AND COD_TIPO_AFIL = :"TIPOAFIL"');
+    DATAMODULE1.QRYEMPRESAUPC.Parameters[0].VALUE := CBTIPODOCAFILIADO.TEXT;
+    DATAMODULE1.QRYEMPRESAUPC.Parameters[1].VALUE := EDTNUMERODUCAFILIADO.TEXT;
+    DATAMODULE1.QRYEMPRESAUPC.Parameters[2].VALUE := 'A';
+       DATAMODULE1.QRYEMPRESAUPC.OPEN;
+        IF DATAMODULE1.QRYEMPRESAUPC.RECORDCOUNT = 0 THEN
+        BEGIN
+        SHOWMESSAGE('EL AFILIADO COTIZANTE  NO TIENE  NINGUN BENEFICIARIO  ADICIONAL' );
+        BitBtn1.SetFocus;
+        EDTPLANILLA.SETFOCUS;
+
+        END
+
+        END
+       ELSE
+       IF  DATAMODULE1.QRYAFILIADOS.RECORDCOUNT = 0 THEN
+        BEGIN
+        SHOWMESSAGE('NO  SE  ENCONTRO NIGUN AFILIADO  CON ESTE  NUMERO DE  DOCUMENTO  VERIFIQUE  NUEVAMENTE ' );
+        BitBtn1.SetFocus;
+        EDTPLANILLA.SETFOCUS;
+
+        END;
+    END;
+
+ END
+ ELSE
+ begin
+ SHOWMESSAGE('DIGITE  EL NUMERO DE  DOCUMENTO DEL AFILIADO QUE  COTIZA A  LA EPS ' );
+ BitBtn1.SetFocus;
+ end;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.FECHAS_PAGO;
+VAR  DIAPAGO,MES,ANO : STRING;
+DAYS: ARRAY[1..7] OF STRING;
+ADATE: TDATETIME;
+BEGIN
+   DATAMODULE1.QRYTIPOS.DISABLECONTROLS;
+    DATAMODULE1.QRYTIPOS.CLOSE;
+    IF  CBTIPOAPORTANTE.ITEMINDEX = 0 THEN
+    BEGIN
+    DATAMODULE1.QRYTIPOS.Parameters[0].Value := 'G';
+    DATAMODULE1.QRYTIPOS.Parameters[1].Value := TRIM(EDTDIGITO.TEXT);
+    END;
+    IF  CBTIPOAPORTANTE.ITEMINDEX = 1 THEN
+    BEGIN
+        DATAMODULE1.QRYTIPOS.Parameters[0].Value := 'P';
+        DATAMODULE1.QRYTIPOS.Parameters[1].Value := TRIM(EDTDIGITO.TEXT);
+    END;
+
+    DATAMODULE1.QRYTIPOS.OPEN;
+    DATAMODULE1.QRYTIPOS.ENABLECONTROLS;
+    IF DATAMODULE1.QRYTIPOS.RECORDCOUNT > 0 THEN
+    BEGIN
+        DIAPAGO := TRIM(DATAMODULE1.QRYTIPOSDIA_HABIL.TEXT);
+        MES:=(FORMATDATETIME('MM',DTFECHAPAGO.DATE));
+        ANO:=(FORMATDATETIME('YYYY',DTFECHAPAGO.DATE));
+        DAYS[1] := 'DOMINGO';
+        DAYS[2] := 'LUNES';
+        DAYS[3] := 'MARTES';
+        DAYS[4] := 'MIERCOLES';
+        DAYS[5] := 'JUEVES';
+        DAYS[6] := 'VIERNES';
+        DAYS[7] := 'SABADO';
+        ADATE := STRTODATE('01/'+ MES + '/' + ANO);
+        // CUANDO  SON DOS  DIAS HABILES
+        IF DIAPAGO = '4' THEN
+        BEGIN
+           IF DAYS[DAYOFWEEK(ADATE )] = 'LUNES' THEN
+           BEGIN
+           EDTULTIMAFECHAPAGO.TEXT := ('04/'+ MES + '/' + ANO);
+           END
+           ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MARTES' THEN
+                BEGIN
+                EDTULTIMAFECHAPAGO.TEXT := ('04/'+ MES + '/' + ANO);
+                END
+                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MIERCOLES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('06/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'JUEVES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('06/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'VIERNES' THEN
+                                BEGIN
+                                EDTULTIMAFECHAPAGO.TEXT := ('06/'+ MES + '/' + ANO);
+                                END
+                                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'SABADO' THEN
+                                        BEGIN
+                                        EDTULTIMAFECHAPAGO.TEXT := ('06/'+ MES + '/' + ANO);
+                                        END
+                                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'DOMINGO' THEN
+                                                BEGIN
+                                                EDTULTIMAFECHAPAGO.TEXT := ('05/'+ MES + '/' + ANO);
+                                                END;
+        //SHOWMESSAGE(' IS A ' + DAYS[DAYOFWEEK(ADATE)]);
+        //EDTULTIMAFECHAPAGO.TEXT := (EDTULTIMAFECHAPAGO.TEXT+ '/'+ MES + '/' + ANO);
+        END;
+        // CUANDO  SON  CINCO DIAS  HABILES
+        IF DIAPAGO = '5' THEN
+        BEGIN
+           IF DAYS[DAYOFWEEK(ADATE )] = 'LUNES' THEN
+           BEGIN
+           EDTULTIMAFECHAPAGO.TEXT := ('05/'+ MES + '/' + ANO);
+           END
+           ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MARTES' THEN
+                BEGIN
+                EDTULTIMAFECHAPAGO.TEXT := ('07/'+ MES + '/' + ANO);
+                END
+                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MIERCOLES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('07/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'JUEVES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('07/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'VIERNES' THEN
+                                BEGIN
+                                EDTULTIMAFECHAPAGO.TEXT := ('07/'+ MES + '/' + ANO);
+                                END
+                                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'SABADO' THEN
+                                        BEGIN
+                                        EDTULTIMAFECHAPAGO.TEXT := ('07/'+ MES + '/' + ANO);
+                                        END
+                                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'DOMINGO' THEN
+                                                BEGIN
+                                                EDTULTIMAFECHAPAGO.TEXT := ('06/'+ MES + '/' + ANO);
+                                                END;
+        END;
+        // CUANDO  SON SEIS DIAS HABILES
+        IF DIAPAGO = '6' THEN
+        BEGIN
+           IF DAYS[DAYOFWEEK(ADATE )] = 'LUNES' THEN
+           BEGIN
+           EDTULTIMAFECHAPAGO.TEXT := ('08/'+ MES + '/' + ANO);
+           END
+           ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MARTES' THEN
+                BEGIN
+                EDTULTIMAFECHAPAGO.TEXT := ('08/'+ MES + '/' + ANO);
+                END
+                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MIERCOLES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('08/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'JUEVES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('08/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'VIERNES' THEN
+                                BEGIN
+                                EDTULTIMAFECHAPAGO.TEXT := ('08/'+ MES + '/' + ANO);
+                                END
+                                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'SABADO' THEN
+                                        BEGIN
+                                        EDTULTIMAFECHAPAGO.TEXT := ('10/'+ MES + '/' + ANO);
+                                        END
+                                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'DOMINGO' THEN
+                                                BEGIN
+                                                EDTULTIMAFECHAPAGO.TEXT := ('09/'+ MES + '/' + ANO);
+                                                END;
+        END;
+
+        // SEPTIMO DIA  DE  PAGO
+        IF DIAPAGO = '7' THEN
+        BEGIN
+           IF DAYS[DAYOFWEEK(ADATE )] = 'LUNES' THEN
+           BEGIN
+           EDTULTIMAFECHAPAGO.TEXT := ('09/'+ MES + '/' + ANO);
+           END
+           ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MARTES' THEN
+                BEGIN
+                EDTULTIMAFECHAPAGO.TEXT := ('09/'+ MES + '/' + ANO);
+                END
+                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MIERCOLES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('09/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'JUEVES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('09/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'VIERNES' THEN
+                                BEGIN
+                                EDTULTIMAFECHAPAGO.TEXT := ('11/'+ MES + '/' + ANO);
+                                END
+                                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'SABADO' THEN
+                                        BEGIN
+                                        EDTULTIMAFECHAPAGO.TEXT := ('11/'+ MES + '/' + ANO);
+                                        END
+                                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'DOMINGO' THEN
+                                                BEGIN
+                                                EDTULTIMAFECHAPAGO.TEXT := ('10/'+ MES + '/' + ANO);
+                                                END;
+        END;
+
+        // PAGOS  EL NOVENO DIA  HABIL
+      IF DIAPAGO = '8' THEN
+        BEGIN
+           IF DAYS[DAYOFWEEK(ADATE )] = 'LUNES' THEN
+           BEGIN
+           EDTULTIMAFECHAPAGO.TEXT := ('10/'+ MES + '/' + ANO);
+           END
+           ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MARTES' THEN
+                BEGIN
+                EDTULTIMAFECHAPAGO.TEXT := ('10/'+ MES + '/' + ANO);
+                END
+                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'MIERCOLES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('10/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'JUEVES' THEN
+                        BEGIN
+                        EDTULTIMAFECHAPAGO.TEXT := ('12/'+ MES + '/' + ANO);
+                        END
+                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'VIERNES' THEN
+                                BEGIN
+                                EDTULTIMAFECHAPAGO.TEXT := ('11/'+ MES + '/' + ANO);
+                                END
+                                ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'SABADO' THEN
+                                        BEGIN
+                                        EDTULTIMAFECHAPAGO.TEXT := ('12/'+ MES + '/' + ANO);
+                                        END
+                                        ELSE IF DAYS[DAYOFWEEK(ADATE )] = 'DOMINGO' THEN
+                                                BEGIN
+                                                EDTULTIMAFECHAPAGO.TEXT := ('12/'+ MES + '/' + ANO);
+                                                END;
+        END;
+
+    END;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.FORMCLOSE(SENDER: TOBJECT; VAR ACTION: TCLOSEACTION);
+BEGIN
+ACTION:=CAFREE;
+END;
+
+PROCEDURE TFRMPAGOUPC.CBBANCOCLICK(SENDER: TOBJECT);
+BEGIN
+IF CBBANCO.TEXT <> '' THEN
+  BEGIN
+    DATAMODULE1.QRYBANCOS.CLOSE;
+    DATAMODULE1.QRYBANCOS.SQL.Clear;
+    DATAMODULE1.qrybancos.SQL.Text:='SELECT * FROM BANCOS_CONTRV WHERE COD_BANCO= :BANCO';
+    DATAMODULE1.QRYBANCOS.Parameters[0].Value := CBBANCO.KEYVALUE;
+    DATAMODULE1.QRYBANCOS.OPEN;
+     IF DATAMODULE1.QRYBANCOS.RECORDCOUNT > 0 THEN
+     BEGIN
+         EDTCUENTA.TEXT :=  DATAMODULE1.QRYBANCOSCTA_BANCO.VALUE;
+         EDTVALEFECTIVO.TEXT := '0';
+         EDTVALCHEQUE.TEXT := '0';
+
+     END;
+  END;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.TABSHEET2ENTER(SENDER: TOBJECT);
+VAR
+PER : TDATE;
+BEGIN
+
+IF CBTIPODECLARACION.ITEMINDEX > -1 THEN
+BEGIN
+TRY
+  PER :=  STRTODATE('01/' + (EDTPERIODO.TEXT));
+   IF (CBTIPODECLARACION.ITEMINDEX = -1 )  THEN
+    BEGIN
+    SHOWMESSAGE('DEBE SELECCIONAR   EL  TIPO DE  DECLARACION  PARA  COTINUAR');
+    PAGECONTROL1.ActivePageIndex := 0;
+    CBTIPODECLARACION.SETFOCUS;
+
+    END
+   ELSE IF (EDTVALUPCPAGAR.TEXT = '') OR (EDTVALUPCPAGAR.TEXT = '0') THEN
+         BEGIN
+           PAGECONTROL1.ActivePageIndex := 1;
+           GroupBox11.SETFOCUS;
+         END;
+     EXCEPT  // MENASJE  DE  LOS ERRORES
+  //SHOWMESSAGE('ERROR AL CALCULAR LIQUIDACION');
+   ON E: ECONVERTERROR DO
+    BEGIN
+     E.MESSAGE := 'EL PERIODO  DE  COTIZACON  ESTA  MAL  ESCRITO DEBE  DIGITARLO NUEVAMENTE';
+       PAGECONTROL1.ActivePageIndex := 0;
+       EDTPERIODO.SETFOCUS;
+      RAISE;
+    END;
+   END;
+
+   END
+   ELSE SHOWMESSAGE('DEBE SELECCIONAR   EL  TIPO DE  DECLARACION  PARA  COTINUAR');
+
+END;
+
+PROCEDURE TFRMPAGOUPC.EDTINTERESESCHANGE(SENDER: TOBJECT);
+BEGIN
+     IF  ((EDTAPORTEINTETERES.TEXT > '0') AND (EDTVALUPCPAGAR.TEXT > '0')) THEN
+     BEGIN
+                EDTAPORTEINTETERES.TEXT := IntToStr(StrToInt64(EDTVALUPCPAGAR.TEXT) + StrToInt64(EDTINTERESES.TEXT));
+                EDTTOTALPAGADO.TEXT := IntToStr(StrToInt64(EDTVALUPCPAGAR.TEXT) + StrToInt64(EDTINTERESES.TEXT));
+     END;
+END;
+
+PROCEDURE TFRMPAGOUPC.MSPERPRESENTACIONEXIT(SENDER: TOBJECT);
+BEGIN
+FRMPAGOUPC.PAGECONTROL1.ACTIVEPAGE := TABSHEET2;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.EDTVALEFECTIVOCHANGE(SENDER: TOBJECT);
+BEGIN
+IF (EDTVALEFECTIVO.TEXT <> '') AND (EDTVALCHEQUE.TEXT <> '') THEN
+   BEGIN
+     edttotalconsignado.TEXT  := FLOATTOSTR(STRTOFLOAT(EDTVALEFECTIVO.TEXT)+ STRTOFLOAT(EDTVALCHEQUE.TEXT))
+
+   END;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.EDTVALCHEQUECHANGE(SENDER: TOBJECT);
+VAR
+I:INTEGER;
+BEGIN
+IF (EDTVALEFECTIVO.TEXT <> '') AND (EDTVALCHEQUE.TEXT <> '') THEN
+   BEGIN
+     //edttotalconsignado.TEXT  := FLOATTOSTR(STRTOFLOAT(EDTVALEFECTIVO.TEXT)+ STRTOFLOAT(EDTVALCHEQUE.TEXT))
+   BTGRABARPLANILLA.ENABLED := TRUE;
+   sgdetabanco.Enabled := TRUE;
+   IF (EDTVALCHEQUE.TEXT = '') OR (EDTVALCHEQUE.TEXT = '0') THEN
+   BEGIN
+   FOR I := 1 TO sgdetabanco.ROWCOUNT DO
+     BEGIN
+                   sgdetabanco.CELLS[0,I]:='';
+                   sgdetabanco.CELLS[1,I]:='';
+                   sgdetabanco.CELLS[2,I]:='';
+
+     END;
+    END;
+   END;
+END;
+
+PROCEDURE TFRMPAGOUPC.NUEVO_REGISTRO;
+VAR I: INTEGER;
+BEGIN
+   EDTNUMERODUCAFILIADO.TEXT := '0';
+   CBTIPODOCAFILIADO.ITEMINDEX := -1;
+   // LIMPIAR  CONSOLIDADO DE LA  PLANILLA
+   EDTNETOAPORTES.TEXT := '0';
+   EDTINTERESES.TEXT := '0';
+   EDTAPORTEINTETERES.TEXT := '0';
+   EDTSALDOANTERIOR.TEXT := '0';
+   EDTTOTALPAGADO.TEXT := '0';
+   EDTVALCHEQUE.TEXT := '0';
+   EDTVALEFECTIVO.TEXT := '0';
+   MSPERPRESENTACION.TEXT := GLPRESENTACION;
+   MSPERPRESENTACION.ENABLED := false;
+
+
+   FOR I := 0 TO SGUPC.ROWCOUNT DO
+     BEGIN
+                   SGUPC.CELLS[0,1]:='';
+                   SGUPC.CELLS[1,1]:='';
+                   SGUPC.CELLS[2,1]:='';
+                   SGUPC.CELLS[3,1]:='';
+                   SGUPC.CELLS[4,1]:='';
+                   SGUPC.CELLS[5,1]:='';
+                   SGUPC.CELLS[6,1]:='';
+                   SGUPC.CELLS[7,1]:='';
+                   SGUPC.CELLS[8,1]:='';
+   END;
+   SGUPC.ROWCOUNT := 2;
+
+    FOR I := 0 TO sgdetabanco.ROWCOUNT DO
+     BEGIN
+                   sgdetabanco.CELLS[0,1]:='';
+                   sgdetabanco.CELLS[1,1]:='';
+                   sgdetabanco.CELLS[2,1]:='';
+   END;
+   sgdetabanco.ROWCOUNT := 2;
+   sgdetabanco.CELLS[0,0]:='COD BANCO';
+   sgdetabanco.CELLS[1,0]:='NUMERO DE CUENTA';
+   sgdetabanco.CELLS[2,0]:='VALOR';
+
+
+
+
+   // LIMPIAR  ENCABEZADO
+    EDTPLANILLA.TEXT := '0';
+    EDNUMERO.TEXT := '0';
+    EDTNOMBREEMPRESA.TEXT := '0';
+    CBTIPODECLARACION.ITEMINDEX := -1;
+    EDTPERIODO.TEXT := '__/____';
+    BTGRABARPLANILLA.ENABLED := FALSE;
+    PBRGRABARDETALLE.MIN := 0;
+    PBRGRABARDETALLE.POSITION := 0;
+    PBRGRABARDETALLE.MAX := 0;
+    DTFECHAPAGO.DATE := STRTODATE(GLDATE);
+    ESTADO_PLANILLA := '';
+    ESTADO_USUARIO := '';
+    CBTIPOAPORTANTE.ITEMINDEX := -1;
+    EDTDIGITO.TEXT := '0';
+    EDTULTIMAFECHAPAGO.TEXT := '0';
+    EDTVALUPCPAGAR.TEXT := '0';
+    CBTIPODOCEMPRESA.TEXT := '';
+    EDTPLANILLA.text := '0';
+   EDTNUMERODUCAFILIADO.ENABLED := TRUE;
+   CBTIPODOCAFILIADO.ENABLED := TRUE;
+   edtnomafiliado.Text := '';
+
+   EDTSUCURSAL.ENABLED := TRUE;
+   // LIMPIAR  CONSOLIDADO DE LA  PLANILLA
+
+
+
+   EDTNETOAPORTES.ENABLED := TRUE;
+   EDTINTERESES.ENABLED := TRUE;
+   EDTSALDOANTERIOR.ENABLED := TRUE;
+   EDTTOTALPAGADO.ENABLED := TRUE;
+   EDTVALCHEQUE.ENABLED := TRUE;
+   CBBANCO.ENABLED := TRUE;
+   EDTVALEFECTIVO.ENABLED := TRUE;
+
+   // LIMPIAR  ENCABEZADO
+    EDTPLANILLA.ENABLED := TRUE;
+    CBTIPODOCEMPRESA.ENABLED := TRUE;
+    EDTNOMBREEMPRESA.ENABLED := TRUE;
+    CBTIPODECLARACION.ENABLED := TRUE;
+    EDTPERIODO.ENABLED := TRUE;
+    BTGRABARPLANILLA.ENABLED := FALSE;
+    DTFECHAPAGO.ENABLED := TRUE;
+   EDTPERIODO.ENABLED := TRUE;
+
+  END;
+
+PROCEDURE TFRMPAGOUPC.BTGRABARPLANILLACLICK(SENDER: TOBJECT);
+var i : integer;
+BEGIN
+
+    if  TRIM(edtplanilla.TEXT) = '' then
+    begin
+    ShowMessage(LowerCase('Digite el numero de  planilla'));
+    FRMPAGOUPC.PAGECONTROL1.ACTIVEPAGE := TABSHEET1;
+    edtplanilla.SetFocus;
+    exit
+    end;
+    if  (TRIM(edtnumeroducafiliado.TEXT) = '') or (TRIM(edtnumeroducafiliado.TEXT) = '0')then
+    begin
+    ShowMessage(LowerCase('Digite el numero de  docuemnto del cotizante'));
+    FRMPAGOUPC.PAGECONTROL1.ACTIVEPAGE := TABSHEET1;
+    edtnumeroducafiliado.SetFocus;
+    exit
+    end;
+
+
+
+
+  if edtvalcheque.Text > '0' then
+  begin
+   FOR I := 1 TO sgdetabanco.ROWCOUNT -2 DO
+   BEGIN
+    IF (i= 1)AND (sgdetabanco.CELLS[0,i] = '')THEN
+    BEGIN
+    if  sgdetabanco.CELLS[0,i] = '' then
+    begin
+    ShowMessage(LowerCase('Falta Ingresar El codigo del Banco'));
+    sgdetabanco.SetFocus;
+    exit
+    end;
+    if  sgdetabanco.CELLS[1,i] = '' then
+    begin
+    ShowMessage(LowerCase('Falta Ingresar El numero del cheque o la  cuenta'));
+    sgdetabanco.SetFocus;
+    exit
+    end;
+    if  (sgdetabanco.CELLS[2,i] = '') or (sgdetabanco.CELLS[2,i] = '0')then
+    begin
+    ShowMessage(LowerCase('Falta Ingresar el valor del cheque'));
+    sgdetabanco.SetFocus;
+    exit
+    end;
+   end;
+   END;
+ end;
+ IF CBBANCO.KeyValue > 0 THEN
+        BEGIN
+        EDIT4.Text := '0';
+                IF STRTOFLOAT(EDTTOTALPAGADO.TEXT) <> STRTOFLOAT(EDTTOTALCONSIGNADO.TEXT) THEN
+                BEGIN
+                        IF MESSAGEDLG (LowerCase(' EL VALOR DE LA PLANILLA  ES DIFERENTE AL CONSIGNADO, SERA GENERADA UNA  NOTA ?'), MTCONFIRMATION, [MBYES, MBNO], 0) = MRYES THEN
+                        BEGIN
+                            ComboBox1.ItemIndex := -1;
+                            EDIT4.Text := '0';
+                            IF STRTOFLOAT(EDTTOTALPAGADO.TEXT) > STRTOFLOAT(EDTTOTALCONSIGNADO.TEXT) THEN
+                            BEGIN
+                            // debito
+                            ComboBox1.ItemIndex := 0;
+                            EDIT4.Text :=FloatToStr(STRTOFLOAT(EDTTOTALPAGADO.TEXT) - STRTOFLOAT(EDTTOTALCONSIGNADO.TEXT));
+                            END
+                            ELSE
+                            //credito
+                            ComboBox1.ItemIndex := 1;
+                            IF STRTOFLOAT(EDTTOTALPAGADO.TEXT) < STRTOFLOAT(EDTTOTALCONSIGNADO.TEXT) THEN
+                            BEGIN
+                            EDIT4.Text :=FLOATTOSTR( STRTOFLOAT(EDTTOTALCONSIGNADO.TEXT)- STRTOFLOAT(EDTTOTALPAGADO.TEXT));
+                            END;
+
+                  END
+                  ELSE
+                  EXIT;
+
+
+                  IF MESSAGEDLG (LowerCase(' DESEA GRABAR LA AUTOLIQUIDACION ?'), MTCONFIRMATION, [MBYES, MBNO], 0) = MRYES THEN
+                        BEGIN
+                      grabarplanilla;
+
+                        END ;
+                END
+                ELSE IF STRTOFLOAT(EDTTOTALPAGADO.TEXT) = STRTOFLOAT(EDTTOTALCONSIGNADO.TEXT) THEN
+                BEGIN
+                grabarplanilla;
+                 END;
+    END
+     ELSE SHOWMESSAGE(LowerCase('DEBE  SELECCIONAR  EL BANCO ANTES DE GRABAR LA  PLANILLA'));
+
+
+
+
+END;
+
+PROCEDURE TFRMPAGOUPC.SPNUEVOCLICK(SENDER: TOBJECT);
+BEGIN
+NUEVO_REGISTRO;
+END;
+
+
+PROCEDURE TFRMPAGOUPC.ESTADOS_PLANILLAS;
+VAR I : INTEGER;
+    TOTAL,UPC : REAL;
+BEGIN
+TOTAL := STRTOFLOAT(edttotalconsignado.TEXT);
+    FOR I := 1 TO SGUPC.ROWCOUNT -2 DO
+        BEGIN
+         UPC := STRTOFLOAT(SGUPC.CELLS[7,I]);
+                IF TOTAL >= UPC THEN
+                BEGIN
+                SGUPC.CELLS[8,I] := 'CIE';
+                TOTAL := TOTAL - UPC;
+                ESTADO_PLANILLA := 'CIE';
+                END
+                ELSE
+                IF TOTAL < UPC THEN
+                BEGIN
+                UPC := ROUNDTO(UPC,2);
+                IF TOTAL >= UPC THEN
+                  BEGIN
+                   SGUPC.CELLS[8,I] := 'CIE';
+                   ESTADO_PLANILLA := 'CIE';
+                   END
+                   ELSE  IF TOTAL >= UPC THEN
+                        BEGIN
+                        SGUPC.CELLS[8,I] := 'UPC';
+                        ESTADO_PLANILLA := 'UPC';
+                   END;
+                END;
+        END;
+   END;
+
+PROCEDURE TFRMPAGOUPC.CARGAR_PLANILLA;
+VAR I: INTEGER;
+BEGIN
+
+
+    DATAMODULE1.QRYPAGOUPC.CLOSE;
+    DATAMODULE1.QRYPAGOUPC.SQL.CLEAR;
+    DATAMODULE1.QRYPAGOUPC.SQL.ADD('SELECT * FROM DET_PAGO_UPC_ADICIONAL WHERE NUM_PLANILLA =:"NUM_PLANILLA"');
+    DATAMODULE1.QRYPAGOUPC.Parameters[0].VALUE := TRIM(EDTPLANILLA.TEXT);
+    DATAMODULE1.QRYPAGOUPC.OPEN;
+    IF DATAMODULE1.QRYPAGOUPC.RECORDCOUNT > 0 THEN
+      BEGIN
+         EDTNUMERODUCAFILIADO.TEXT := DATAMODULE1.QRYPAGOUPCAFI_NUM_DOCUMENTO.VALUE;
+         IF DATAMODULE1.QRYPAGOUPCAFI_TIP_DOCUMENTO.VALUE = 'CC' THEN
+           BEGIN
+            CBTIPODOCAFILIADO.ITEMINDEX := 0;
+            END
+            ELSE IF DATAMODULE1.QRYPAGOUPCAFI_TIP_DOCUMENTO.VALUE = 'CE' THEN
+                  BEGIN
+                  CBTIPODOCAFILIADO.ITEMINDEX := 1;
+                  END
+                  ELSE IF DATAMODULE1.QRYPAGOUPCAFI_TIP_DOCUMENTO.VALUE = 'TI' THEN
+                         BEGIN
+                         CBTIPODOCAFILIADO.ITEMINDEX := 2;
+                         END
+                          ELSE IF DATAMODULE1.QRYPAGOUPCAFI_TIP_DOCUMENTO.VALUE = 'RC' THEN
+                                 BEGIN
+                                 CBTIPODOCAFILIADO.ITEMINDEX := 3;
+                                 END;
+
+       FOR I := 0 TO DATAMODULE1.QRYPAGOUPC.RECORDCOUNT -1 DO
+        BEGIN
+        SGUPC.ROWCOUNT := SGUPC.ROWCOUNT +1 ;
+        SGUPC.CELLS[0,I+1]  := DATAMODULE1.QRYPAGOUPCAFI_TIP_DOCUMENTO.VALUE;
+        SGUPC.CELLS[1,I+1]  := DATAMODULE1.QRYPAGOUPCAFI_NUM_DOCUMENTO.VALUE;
+        SGUPC.CELLS[2,I+1]  := DATAMODULE1.QRYPAGOUPCAFI_TIP_DOC_ADICIONAL.VALUE;
+        SGUPC.CELLS[3,I+1]  := DATAMODULE1.QRYPAGOUPCAFI_NUM_DOC_ADICIONAL.VALUE;
+        //  MOSTRAR LOS  NOMBRES
+
+        SGUPC.CELLS[7,I+1]  := FLOATTOSTR(DATAMODULE1.QRYPAGOUPCVAL_PAGADO.VALUE);
+        SGUPC.CELLS[8,I+1]  := DATAMODULE1.QRYPAGOUPCCOD_ESTADO.VALUE;
+        DATAMODULE1.QRYPAGOUPC.FINDNEXT;
+        END;
+
+
+                DATAMODULE1.QRYAFILIADOS.CLOSE;
+                DATAMODULE1.QRYAFILIADOS.SQL.CLEAR;
+                DATAMODULE1.QRYAFILIADOS.SQL.ADD('SELECT  TIP_DOCUMENTO_EMP, NUM_DOCUMENTO_EMP,TIP_DOCUMENTO_AFI, NUM_DOCUMENTO_AFI,PRI_APELLIDO,SEG_APELLIDO,PRI_NOMBRE,SEG_NOMBRE, VAL_SUELDO_AFIL,FEC_INGRESO_UNI,FEC_EGRESO_UNI,AFILIADOS_EMPRESAS.COD_ESTADO,FEC_NACIMIENTO,COD_SEXO,T1.COD_MODALIDAD_TRA');
+                DATAMODULE1.QRYAFILIADOS.SQL.ADD('FROM AFILIADOS_EMPRESAS,AFILIADOS T1');
+                DATAMODULE1.QRYAFILIADOS.SQL.ADD('WHERE TIP_DOCUMENTO_AFI = TIP_DOCUMENTO AND NUM_DOCUMENTO_AFI = NUM_DOCUMENTO AND TIP_DOCUMENTO_AFI = :"NIT" AND NUM_DOCUMENTO_AFI = :"DOCUMENTO" ');
+                DATAMODULE1.QRYAFILIADOS.Parameters[0].VALUE := TRIM(CBTIPODOCAFILIADO.TEXT);
+                DATAMODULE1.QRYAFILIADOS.Parameters[1].VALUE := TRIM(EDTNUMERODUCAFILIADO.TEXT);
+                DATAMODULE1.QRYAFILIADOS.OPEN;
+                IF DATAMODULE1.QRYAFILIADOS.RECORDCOUNT > 0 THEN
+                        BEGIN
+                        EDTNOMAFILIADO.TEXT := DATAMODULE1.QRYAFILIADOSPRI_APELLIDO.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSSEG_APELLIDO.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSPRI_NOMBRE.VALUE + ' ' + DATAMODULE1.QRYAFILIADOSSEG_NOMBRE.VALUE;
+                        END;
+
+        EDTPLANILLA.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('NUM_PLANILLA').VALUE;
+        CBTIPODOCEMPRESA.TEXT := DATAMODULE1.QRYAUTOLIQUIDACIONEMP_TIPO_DOC.VALUE;
+        EDNUMERO.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('EMP_NUMERO_DOC').VALUE;
+        EDTSUCURSAL.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('COD_SUCURSAL').VALUE;
+        IF DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('TIP_DECLARACION').VALUE  = 'D' THEN
+         BEGIN
+         CBTIPODECLARACION.ITEMINDEX := 0;
+         END
+         ELSE IF DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('TIP_DECLARACION').VALUE  = 'A' THEN
+                BEGIN
+                CBTIPODECLARACION.ITEMINDEX := 1;
+                END;
+                        IF DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('FEC_PAGO').VALUE >= 0 THEN
+                        BEGIN
+                        DTFECHAPAGO.DATE := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('FEC_PAGO').VALUE;
+                        END;
+
+        EDTPERIODO.TEXT :=DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('PER_COTIZACION').VALUE;
+        MSPERPRESENTACION.TEXT :=DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('PER_PRESENTACION').VALUE;
+
+    DATAMODULE1.QRYEMPRESAS.DISABLECONTROLS;
+    DATAMODULE1.QRYEMPRESAS.CLOSE;
+    DATAMODULE1.QRYEMPRESAS.Parameters[0].Value := TRIM(CBTIPODOCEMPRESA.TEXT);
+    DATAMODULE1.QRYEMPRESAS.Parameters[1].Value := TRIM(EDNUMERO.TEXT);
+    DATAMODULE1.QRYEMPRESAS.OPEN;
+    DATAMODULE1.QRYEMPRESAS.ENABLECONTROLS;
+        IF DATAMODULE1.QRYEMPRESAS.RECORDCOUNT > 0 THEN
+        BEGIN
+        EDTNOMBREEMPRESA.TEXT := DATAMODULE1.QRYEMPRESASNOM_EMPRESA.VALUE;
+           IF DATAMODULE1.QRYEMPRESASTIP_APORTANTE.VALUE = 'G' THEN
+           BEGIN
+           CBTIPOAPORTANTE.ITEMINDEX := 0;
+           END
+           ELSE
+              IF DATAMODULE1.QRYEMPRESASTIP_APORTANTE.VALUE = 'P' THEN
+              BEGIN
+              CBTIPOAPORTANTE.ITEMINDEX := 1;
+              END;
+           END;
+
+        EDTDIGITO.TEXT := COPY(TRIM(EDNUMERO.TEXT),LENGTH(EDNUMERO.TEXT),1);
+       // SHOWMESSAGE('NIT EMPRESA '+ EDNUMERO.TEXT + ' ULTIMO NUMERO  :' +  EDTDIGITO.TEXT);
+        FECHAS_PAGO;
+         // GRABAR  CONSOLIDADO DE LA  PLANILLA
+        EDTVALUPCPAGAR.TEXT :=FLOATTOSTR(DATAMODULE1.QRYAUTOLIQUIDACIONTOT_UPC.VALUE);
+        EDTNETOAPORTES.TEXT := FLOATTOSTR(DATAMODULE1.QRYAUTOLIQUIDACIONTOT_UPC.VALUE);
+        EDTINTERESES.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('INT_MORA').VALUE;
+        EDTAPORTEINTETERES.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('TOT_APORTE_MMORA').VALUE;
+        EDTSALDOANTERIOR.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('TOT_SALDO_FAV').VALUE;
+        EDTTOTALPAGADO.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('TOT_PAGADO').VALUE;
+         // LUGAR  DE  CONSIGNACION
+        CBBANCO.KEYVALUE := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('COD_BANCO').VALUE;
+        EDTCUENTA.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('NUM_CUENTA').VALUE;
+          IF DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('VAL_EFECTIVO').VALUE > 0 THEN
+            BEGIN
+            EDTVALEFECTIVO.TEXT:= DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('VAL_EFECTIVO').VALUE;
+            END
+            ELSE  EDTVALEFECTIVO.TEXT:= '0';
+         IF DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('VAL_CHEQUE').VALUE >=0 THEN
+            BEGIN
+            EDTVALCHEQUE.TEXT := DATAMODULE1.QRYAUTOLIQUIDACION.FIELDBYNAME('VAL_CHEQUE').VALUE;
+           END
+         ELSE
+         EDTVALCHEQUE.TEXT := '0';
+         edttotalconsignado.TEXT :=   FLOATTOSTR(STRTOFLOAT(EDTVALCHEQUE.TEXT) + STRTOFLOAT(EDTVALEFECTIVO.TEXT));
+
+    END
+    ELSE
+    IF DATAMODULE1.QRYPAGOUPC.RECORDCOUNT = 0 THEN
+      BEGIN
+      SHOWMESSAGE('NO ES UNA PLANILLA  DE UPC');
+      EDTPLANILLA.Text := '0';
+      EDTPLANILLA.SetFocus;
+     end;
+END;
+
+PROCEDURE TFRMPAGOUPC.APPMESSAGE(VAR MSG: TMSG; VAR HANDLED: BOOLEAN);
+BEGIN
+
+IF MSG.WPARAM = VK_RETURN THEN
+       BEGIN
+        IF ((SCREEN.ACTIVECONTROL) IS TCOMBOBOX) THEN
+             MSG.WPARAM := VK_TAB;
+            IF (((SCREEN.ACTIVECONTROL) IS TEDIT)) THEN
+                 MSG.WPARAM := VK_TAB;
+               IF ((SCREEN.ACTIVECONTROL) IS TDBEDIT) THEN
+                MSG.WPARAM := VK_TAB;
+                 IF ((SCREEN.ACTIVECONTROL) IS TDATETIMEPICKER) THEN
+                MSG.WPARAM := VK_TAB;
+                IF ((SCREEN.ACTIVECONTROL) IS TMASKEDIT) THEN
+                MSG.WPARAM := VK_TAB;
+                IF ((SCREEN.ACTIVECONTROL) IS TDBLookupComboBox) THEN
+                MSG.WPARAM := VK_TAB;
+        END;
+END;
+
+PROCEDURE TFRMPAGOUPC.VERIFICAR_COMPENSACION;
+VAR  PLANILLA : STRING;
+BEGIN
+IF (CBTIPODOCAFILIADO.TEXT <> '') AND (EDTNUMERODUCAFILIADO.TEXT > '0')  THEN
+    BEGIN
+    DATAMODULE1.QRYDETALLE.CLOSE;
+    DATAMODULE1.QRYDETALLE.SQL.CLEAR;
+    DATAMODULE1.QRYDETALLE.SQL.ADD('SELECT * FROM DET_PLANILLA_AUTOLIQUIDACION WHERE AFI_TIPO_DOC = :"CC" AND AFI_NUMERO_DOC = :"DOCUMENTO" AND  PER_COTIZACION = :"PERIODO"');
+    DATAMODULE1.QRYDETALLE.Parameters[0].VALUE := CBTIPODOCAFILIADO.TEXT;
+    DATAMODULE1.QRYDETALLE.Parameters[1].VALUE := EDTNUMERODUCAFILIADO.TEXT;
+    DATAMODULE1.QRYDETALLE.Parameters[2].VALUE := EDTPERIODO.TEXT;
+    DATAMODULE1.QRYDETALLE.OPEN;
+    IF DATAMODULE1.QRYDETALLE.RECORDCOUNT = 0 THEN
+       BEGIN
+        SHOWMESSAGE('EL  BENEFICIARIO  ADICIONAL  TO TENDRA  SERVICIOS  EN  EL PERIODO  '+  EDTPERIODO.Text + ' PORQUE  NO A REALIZO LOS  APORTES' );
+        ESTADO_PLANILLA := 'UPC';
+        END;
+    END;
+END;
+
+PROCEDURE TFRMPAGOUPC.CBBANCOENTER(SENDER: TOBJECT);
+BEGIN
+
+ IF EDTINTERESES.TEXT = '' THEN
+    EDTINTERESES.TEXT := '0';
+ IF  EDTAPORTEINTETERES.TEXT = '' THEN
+     EDTAPORTEINTETERES.TEXT := '0';
+ IF  EDTSALDOANTERIOR.TEXT = '' THEN
+     EDTSALDOANTERIOR.TEXT := '0';
+
+END;
+
+PROCEDURE TFRMPAGOUPC.CBBANCOEXIT(SENDER: TOBJECT);
+BEGIN
+IF CBBANCO.TEXT <> '' THEN
+ BEGIN
+ BTGRABARPLANILLA.ENABLED := TRUE;
+ END;
+END;
+
+PROCEDURE TFRMPAGOUPC.EDTINTERESESEXIT(SENDER: TOBJECT);
+BEGIN
+IF EDTVALUPCPAGAR.TEXT = '0' THEN
+  BEGIN
+  FRMPAGOUPC.PAGECONTROL1.ACTIVEPAGE := TABSHEET1;
+  END
+END;
+
+PROCEDURE TFRMPAGOUPC.CERRAR1CLICK(SENDER: TOBJECT);
+BEGIN
+FRMPAGOUPC.CLOSE;
+END;
+
+FUNCTION TFRMPAGOUPC.EDAD(FECHANACIMIENTO: STRING): INTEGER;
+VAR
+      ITEMP,ITEMP2,NADA:WORD;
+      FECHA,FECHA1:TDATE;
+   BEGIN
+     FECHA:=STRTODATE(FECHANACIMIENTO);
+     FECHA1:=STRTODATE('01/'+ EDTPERIODO.TEXT);
+     DECODEDATE(FECHA1,ITEMP,NADA,NADA);
+     DECODEDATE(FECHA,ITEMP2,NADA,NADA);
+      IF FORMATDATETIME('MMDD',FECHA1) <
+         FORMATDATETIME('MMDD',FECHA) THEN RESULT:=ITEMP-ITEMP2-1
+                                      ELSE RESULT:=ITEMP-ITEMP2;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.CBTIPODECLARACIONENTER(SENDER: TOBJECT);
+BEGIN
+IF (CBTIPODOCAFILIADO.ITEMINDEX = -1) AND ((EDTNUMERODUCAFILIADO.TEXT = '0') OR   (EDTNUMERODUCAFILIADO.TEXT = '')) THEN
+  BEGIN
+  SHOWMESSAGE('DIGITE  EL  DOCUMENTO AFILIADO COTIZANTE');
+  CBTIPODOCEMPRESA.SETFOCUS;
+  END;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.DTFECHAPAGOENTER(SENDER: TOBJECT);
+BEGIN
+     IF CBTIPODECLARACION.ITEMINDEX = -1 THEN
+     BEGIN
+     SHOWMESSAGE('DEBE SELECCIONE  EL TIPO DE  DECLARACION');
+     CBTIPODECLARACION.SETFOCUS;
+     exit;
+     END;
+
+
+END;
+
+PROCEDURE TFRMPAGOUPC.EMPRESA_AFILIADO;
+VAR NUMERO,MES,ANO : STRING;
+    CANTIDAD : INTEGER;
+   BEGIN
+
+ IF (EDTNUMERODUCAFILIADO.TEXT <> '')  AND  (CBTIPODOCAFILIADO.TEXT <> '')THEN
+ BEGIN
+    IF EDNUMERO.TEXT <> '0' THEN
+    BEGIN
+    ESTADO_PLANILLA := '';
+    DATAMODULE1.QRYEMPRESAS.CLOSE;
+    DATAMODULE1.QRYEMPRESAS.Parameters[0].Value := TRIM(DATAMODULE1.QRYAFILIADOSTIP_DOCUMENTO_EMP.VALUE);
+    DATAMODULE1.QRYEMPRESAS.Parameters[1].Value := TRIM(DATAMODULE1.QRYAFILIADOSNUM_DOCUMENTO_EMP.VALUE);
+    DATAMODULE1.QRYEMPRESAS.OPEN;
+        IF DATAMODULE1.QRYEMPRESAS.RECORDCOUNT > 0 THEN
+        BEGIN
+        EDTNOMBREEMPRESA.TEXT := DATAMODULE1.QRYEMPRESASNOM_EMPRESA.VALUE;
+
+           IF DATAMODULE1.QRYEMPRESASTIP_APORTANTE.VALUE = 'G' THEN
+           BEGIN
+          CBTIPOAPORTANTE.ITEMINDEX := 0;
+          END
+          ELSE
+             IF DATAMODULE1.QRYEMPRESASTIP_APORTANTE.VALUE = 'P' THEN
+             BEGIN
+             CBTIPOAPORTANTE.ITEMINDEX := 1;
+             END;
+
+        EDTDIGITO.TEXT := COPY(TRIM(EDNUMERO.TEXT),LENGTH(EDNUMERO.TEXT),1);
+
+        FECHAS_PAGO;
+        END;
+      END;
+ END;
+
+END;
+
+PROCEDURE TFRMPAGOUPC.EDTVALCHEQUEEXIT(SENDER: TOBJECT);
+BEGIN
+IF EDTVALCHEQUE.TEXT <> '' THEN
+ BEGIN
+ EDTTOTALCONSIGNADO.TEXT := FLOATTOSTR((STRTOINT(EDTVALCHEQUE.TEXT)) + (STRTOINT(EDTVALEFECTIVO.TEXT)));
+ BTGRABARPLANILLA.ENABLED := TRUE;
+ IF EDTVALCHEQUE.TEXT > '0' THEN
+ BEGIN
+ ShowMessage(LowerCase('Ingrese los  numero de los  cheques y los  valores'));
+ sgdetabanco.ROWCOUNT := sgdetabanco.ROWCOUNT +1;
+ sgdetabanco.Enabled := TRUE;
+ sgdetabanco.SetFocus;
+ end
+ else BTGRABARPLANILLA.SetFocus;
+
+
+  END;
+
+END;
+
+procedure TFRMPAGOUPC.edtvalefectivoExit(Sender: TObject);
+begin
+IF EDTVALCHEQUE.TEXT <> '' THEN
+ BEGIN
+ EDTTOTALCONSIGNADO.TEXT := FLOATTOSTR((STRTOINT(EDTVALCHEQUE.TEXT)) + (STRTOINT(EDTVALEFECTIVO.TEXT)));
+ BTGRABARPLANILLA.ENABLED := TRUE;
+ sgdetabanco.Enabled := TRUE;
+  END;
+
+end;
+
+procedure TFRMPAGOUPC.edtvalchequeEnter(Sender: TObject);
+begin
+        IF (edttotalpagado.TEXT = '0') THEN
+        BEGIN
+        SHOWMESSAGE(LowerCase('NO SE  DIGITARON  USUARIOS DE LA  PLANILLA'));
+        NUEVO_REGISTRO;
+        END;
+
+end;
+
+procedure TFRMPAGOUPC.sgdetabancoSelectCell(Sender: TObject; ACol,
+  ARow: Integer; var CanSelect: Boolean);
+  var i : integer;
+    valor : real;
+
+begin
+
+IF sgdetabanco.CELLS[2,sgdetabanco.ROW]  >'0'  THEN
+  BEGIN
+   FOR I := 1 TO sgdetabanco.ROWCOUNT -2 DO
+   BEGIN
+     if sgdetabanco.CELLS[2,i] >= '0'  then
+     begin
+       try
+          if strtoint(sgdetabanco.CELLS[2,i])> 0 then
+          begin
+          valor := valor + strtoint(sgdetabanco.CELLS[2,i]);
+          end;
+       EXCEPT  // MENASJE  DE  LOS ERRORES
+       ON E: EConvertError DO
+        BEGIN
+        e.Message := 'Digite Solo digitos';
+        sgdetabanco.CELLS[2,i] := '0';
+        RAISE;
+        END;
+       end;
+     end;
+    end;
+    if valor >= strtofloat(edtvalcheque.text) then
+    begin
+    sgdetabanco.Enabled := false;
+    btgrabarplanilla.SetFocus;
+    end;
+   end;
+
+end;
+
+procedure TFRMPAGOUPC.grabarplanilla;
+var valor,i,j : integer;
+begin
+try
+           DATAMODULE1.DTBDATAMEC.BeginTrans;
+           DATAMODULE1.QRYPLANILLAS.CLOSE;
+           DATAMODULE1.QRYPLANILLAS.SQL.CLEAR;
+           DATAMODULE1.QRYPLANILLAS.SQL.ADD('SELECT * FROM AUTOLIQUIDACION  WHERE  NUM_PLANILLA  = :"PLANILLA"');
+           DATAMODULE1.QRYPLANILLAS.Parameters[0].VALUE := EDTPLANILLA.TEXT;
+           DATAMODULE1.QRYPLANILLAS.OPEN;
+              IF DATAMODULE1.QRYPLANILLAS.RECORDCOUNT > 0 THEN
+              BEGIN
+              DATAMODULE1.QRYPLANILLAS.EDIT;
+              // DATAMODULE1.QRYPLANILLASFEC_MODIFICACION.VALUE := STRTODATE(GLDATE);
+              END
+              ELSE IF DATAMODULE1.QRYPLANILLAS.RECORDCOUNT = 0 THEN
+              BEGIN
+               DATAMODULE1.QRYPLANILLAS.INSERT;
+                DATAMODULE1.QRYPLANILLASFEC_DIGITACION.VALUE := STRTODATE(GLDATE);
+               END;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('NUM_PLANILLA').VALUE := TRIM(EDTPLANILLA.TEXT);
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('EMP_TIPO_DOC').VALUE := TRIM(CBTIPODOCEMPRESA.TEXT);
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('EMP_NUMERO_DOC').VALUE := TRIM(EDNUMERO.TEXT);
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('COD_SUCURSAL').VALUE := TRIM(EDTSUCURSAL.TEXT);
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TIP_DECLARACION').VALUE := TRIM(CBTIPODECLARACION.TEXT);
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('FEC_PAGO').VALUE := DTFECHAPAGO.DATE;
+           //DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('NUM_PLANILLA_CORR').VALUE := TRIM(EDTCORRECIONPLANILLA.TEXT);
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('PER_COTIZACION').VALUE := TRIM(EDTPERIODO.TEXT);
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('PER_PRESENTACION').VALUE := TRIM(MSPERPRESENTACION.TEXT);
+           // GRABAR  CONSOLIDADO DE LA  PLANILLA
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_PLANILLA').VALUE := '0';
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_APORTE_PER').VALUE := '0';
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_INCAPACIDAD').VALUE := '0';
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_LICENCIAS').VALUE := '0';
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_APORTE').VALUE := '0';
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('INT_MORA').VALUE := EDTINTERESES.TEXT;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_APORTE_MMORA').VALUE := EDTAPORTEINTETERES.TEXT;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_SALDO_FAV').VALUE := EDTSALDOANTERIOR.TEXT;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_UPC').VALUE := EDTVALUPCPAGAR.TEXT;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('TOT_PAGADO').VALUE := EDTTOTALPAGADO.TEXT;
+           // LUGAR  DE  CONSIGNACION
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('COD_BANCO').VALUE := CBBANCO.KEYVALUE;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('NUM_CUENTA').VALUE := EDTCUENTA.TEXT;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('VAL_EFECTIVO').VALUE := EDTVALEFECTIVO.TEXT;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('VAL_CHEQUE').VALUE := EDTVALCHEQUE.TEXT;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('EST_PLANILLA').VALUE := ESTADO_PLANILLA;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('COD_OFICINA').VALUE := GLOFICINA;
+           DATAMODULE1.QRYPLANILLAS.FIELDBYNAME('COD_REGIONAL').VALUE := GLREGIONAL;
+           DATAMODULE1.QRYPLANILLASTIP_DOC_USUARIO.VALUE := GLTIPO;
+           DATAMODULE1.QRYPLANILLASNUM_DOC_USUARIO.VALUE := GLNUMERO;
+           DATAMODULE1.QRYPLANILLASCRU_CONCILIACION.VALUE := 'N';
+
+
+
+ // PARA  CONCILIAR EN BANCOS
+
+
+     DataModule1.qryestrato.close;
+           DataModule1.qryestrato.sql.clear;
+           DataModule1.qryestrato.sql.add('SELECT * FROM EST_BANCARIO_AUTO');
+           DataModule1.qryestrato.sql.add('WHERE COD_BANCO = :"COD_BANCO" AND NUM_DOCUMENTO= :"NUM_DOCUMENTO" AND NUM_PLANILLA = :"NUM_PLANILLA" AND FEC_RECAUDO = :"FEC_RECAUDO" AND VAL_CONSIGNACION = :"VAL_CONSIGNACION" AND EST_CONCILIACION = :"ESTADO" "');
+           DataModule1.qryestrato.Parameters[0].VALUE := cbbanco.KeyValue;
+           DataModule1.qryestrato.Parameters[1].VALUE := trim(edtnumeroducafiliado.text);
+           DataModule1.qryestrato.Parameters[2].VALUE := trim(EDTPLANILLA.text);
+           DataModule1.qryestrato.Parameters[3].VALUE := FloatToDateTime(dtfechapago.Date);
+           DataModule1.qryestrato.Parameters[4].VALUE := strtofloat(edttotalconsignado.text);
+           DataModule1.qryestrato.Parameters[5].VALUE := 'N';
+           //DataModule1.qryestrato.REQUESTLIVE := false;
+           DataModule1.qryestrato.Open;
+                 if DataModule1.qryestrato.RecordCount = 1 then
+                 begin
+                 DataModule1.qryestrato.Edit;
+                 DataModule1.qryplanillasCRU_CONCILIACION.Value := 'S';
+                 DataModule1.qryestratoEST_CONCILIACION.Value := 'S';
+                 DataModule1.qryestratoFEC_PLANILLA_CON.Value := strtodate(GLDATE);
+                 DataModule1.qryestrato.Post;
+                 end
+                 else
+                             begin
+                             DataModule1.qryestrato.close;
+                             DataModule1.qryestrato.sql.clear;
+                             DataModule1.qryestrato.sql.add('SELECT * FROM EST_BANCARIO_AUTO');
+                             DataModule1.qryestrato.sql.add('WHERE COD_BANCO = :"COD_BANCO" AND NUM_PLANILLA = :"NUM_PLANILLA" AND FEC_RECAUDO = :"FEC_RECAUDO" AND VAL_CONSIGNACION = :"VAL_CONSIGNACION" AND EST_CONCILIACION = :"ESTADO"');
+                             DataModule1.qryestrato.Parameters[0].VALUE := cbbanco.KeyValue;
+                             DataModule1.qryestrato.Parameters[1].VALUE := trim(EDTPLANILLA.text);
+                             DataModule1.qryestrato.Parameters[2].VALUE := FloatToDateTime(dtfechapago.Date);
+                             DataModule1.qryestrato.Parameters[3].VALUE := strtofloat(edttotalconsignado.text);
+                             DataModule1.qryestrato.Parameters[4].VALUE := 'N';
+                             //DataModule1.qryestrato.REQUESTLIVE := false;
+                             DataModule1.qryestrato.Open;
+                                   if DataModule1.qryestrato.RecordCount = 1 then
+                                   begin
+                                   DataModule1.qryestrato.Edit;
+                                   DataModule1.qryestratoEST_CONCILIACION.Value := 'S';
+                                   DataModule1.qryestratoNUM_DOCUMENTO.Value := TRIM(edtnumeroducafiliado.Text);
+                                   DataModule1.qryautoliquidacionCRU_CONCILIACION.Value := 'S';
+                                   DataModule1.qryestratoFEC_PLANILLA_CON.Value := strtodate(GLDATE);
+                                   DataModule1.qryestrato.Post;
+                                   end
+                                   ELSE
+                                        begin
+                                         DataModule1.qryestrato.close;
+                                         DataModule1.qryestrato.sql.clear;
+                                         DataModule1.qryestrato.sql.add('SELECT * FROM EST_BANCARIO_AUTO');
+                                         DataModule1.qryestrato.sql.add('WHERE COD_BANCO = :"COD_BANCO" AND NUM_DOCUMENTO= :"NUM_DOCUMENTO" AND FEC_RECAUDO = :"FEC_RECAUDO" AND VAL_CONSIGNACION = :"VAL_CONSIGNACION" AND EST_CONCILIACION = :"ESTADO" "');
+                                         DataModule1.qryestrato.Parameters[0].VALUE := cbbanco.KeyValue;
+                                         DataModule1.qryestrato.Parameters[1].VALUE := trim(edtnumeroducafiliado.text);
+                                         DataModule1.qryestrato.Parameters[2].VALUE := FloatToDateTime(dtfechapago.Date);
+                                         DataModule1.qryestrato.Parameters[3].VALUE := strtofloat(edttotalconsignado.text);
+                                         DataModule1.qryestrato.Parameters[4].VALUE := 'N';
+                                         DataModule1.qryestrato.Open;
+                                               if DataModule1.qryestrato.RecordCount = 1 then
+                                               begin
+                                               DataModule1.qryestrato.Edit;
+                                               DataModule1.qryestratoEST_CONCILIACION.Value := 'S';
+                                               DataModule1.qryestratoNUM_PLANILLA.Value := TRIM(EDTPLANILLA.Text);
+                                               DataModule1.qryplanillasCRU_CONCILIACION.Value := 'S';
+                                               DataModule1.qryestratoFEC_PLANILLA_CON.Value := strtodate(GLDATE);
+                                               DataModule1.qryestrato.Post;
+                                               DATAMODULE1.qryestrato.CLOSE;
+                                               end;
+                                     END;
+                             end;
+
+ DATAMODULE1.QRYPLANILLAS.POST;
+ DATAMODULE1.QRYPLANILLAS.CLOSE;
+
+
+ // GRABAR  DETALLE  DE  LA  PLANILLA
+  PBRGRABARDETALLE.MIN := 0;
+  PBRGRABARDETALLE.POSITION := 0;
+  PBRGRABARDETALLE.MAX := SGUPC.ROWCOUNT -2;
+
+  FOR I := 1 TO SGUPC.ROWCOUNT -2 DO
+  BEGIN
+    DATAMODULE1.QRYPAGOUPC.CLOSE;
+    DATAMODULE1.QRYPAGOUPC.SQL.CLEAR;
+    DATAMODULE1.QRYPAGOUPC.SQL.ADD('SELECT * FROM DET_PAGO_UPC_ADICIONAL WHERE NUM_PLANILLA =:"NUM_PLANILLA" AND AFI_TIP_DOCUMENTO = :"TIPO_COTIZA" AND AFI_NUM_DOCUMENTO = :"NUM_COTIZA" AND AFI_TIP_DOC_ADICIONAL = :"TIPO_UPC" AND AFI_NUM_DOC_ADICIONAL = :"NUM_UPC"');
+    DATAMODULE1.QRYPAGOUPC.Parameters[0].VALUE := TRIM(EDTPLANILLA.TEXT);
+    DATAMODULE1.QRYPAGOUPC.Parameters[1].VALUE := TRIM(SGUPC.CELLS[0,I]);
+    DATAMODULE1.QRYPAGOUPC.Parameters[2].VALUE := TRIM(SGUPC.CELLS[1,I]);
+    DATAMODULE1.QRYPAGOUPC.Parameters[3].VALUE := TRIM(SGUPC.CELLS[2,I]);
+    DATAMODULE1.QRYPAGOUPC.Parameters[4].VALUE := TRIM(SGUPC.CELLS[3,I]);
+    DATAMODULE1.QRYPAGOUPC.OPEN;
+
+        IF DATAMODULE1.QRYPAGOUPC.RECORDCOUNT = 1 THEN
+        BEGIN
+        DATAMODULE1.QRYPAGOUPC.EDIT;
+        END
+        ELSE
+        IF DATAMODULE1.QRYPAGOUPC.RECORDCOUNT = 0 THEN
+        BEGIN
+        DATAMODULE1.QRYPAGOUPC.INSERT;
+        END;
+        DATAMODULE1.QRYPAGOUPCNUM_PLANILLA.VALUE := TRIM(EDTPLANILLA.TEXT);
+        DATAMODULE1.QRYPAGOUPCPER_COTIZACION.VALUE := TRIM(EDTPERIODO.TEXT);
+        DATAMODULE1.QRYPAGOUPCPER_PRESENTACION.VALUE := TRIM(MSPERPRESENTACION.TEXT);
+        DATAMODULE1.QRYPAGOUPCAFI_TIP_DOCUMENTO.VALUE :=  TRIM(SGUPC.CELLS[0,I]);
+        DATAMODULE1.QRYPAGOUPCAFI_NUM_DOCUMENTO.VALUE := TRIM(SGUPC.CELLS[1,I]);
+        DATAMODULE1.QRYPAGOUPCAFI_TIP_DOC_ADICIONAL.VALUE := TRIM(SGUPC.CELLS[2,I]);
+        DATAMODULE1.QRYPAGOUPCAFI_NUM_DOC_ADICIONAL.VALUE := TRIM(SGUPC.CELLS[3,I]);
+        DATAMODULE1.QRYPAGOUPCVAL_PAGADO.VALUE := STRTOFLOAT(SGUPC.CELLS[7,I]);
+        DATAMODULE1.QRYPAGOUPCCOD_ESTADO.VALUE := 'CIE';
+        DATAMODULE1.QRYPAGOUPC.POST;
+        DATAMODULE1.QRYPAGOUPC.CLOSE;
+        FRMPAGOUPC.REFRESH;
+        PBRGRABARDETALLE.POSITION := PBRGRABARDETALLE.POSITION + 1;
+
+
+     END;
+
+      // DESCARGAR  CARTERA MOROSA
+        FOR J := 1 TO SGUPC.ROWCOUNT -2 DO
+        BEGIN
+        if SGUPC.CELLS[0,J] > '0' then
+        begin
+                DATAMODULE1.QRYCARTERA.CLOSE;
+                DATAMODULE1.QRYCARTERA.SQL.CLEAR;
+                DATAMODULE1.QRYCARTERA.SQL.ADD('SELECT * FROM  CARTERA WHERE TIP_DOCUMENTO = :TIPO AND NUM_DOCUMENTO = :NUMERO AND PER_COMPENSACION = :PERIODO AND TIPO_MORA > :ESTADO');
+                DATAMODULE1.QRYCARTERA.Parameters[0].VALUE := SGUPC.CELLS[0,J];
+                DATAMODULE1.QRYCARTERA.Parameters[1].VALUE := SGUPC.CELLS[1,J];
+                DATAMODULE1.QRYCARTERA.Parameters[2].VALUE := EDTPERIODO.TEXT;
+                DATAMODULE1.QRYCARTERA.Parameters[3].VALUE := '0';
+                DATAMODULE1.QRYCARTERA.OPEN;
+                        IF DATAMODULE1.QRYCARTERA.RECORDCOUNT = 1 THEN
+                        BEGIN
+                        DATAMODULE1.QRYCARTERA.EDIT;
+                        DATAMODULE1.QRYCARTERATIPO_MORA.VALUE := '0';
+                        FRMPAGOUPC.REFRESH;
+                        DATAMODULE1.QRYCARTERA.POST;
+                        DATAMODULE1.QRYCARTERA.CLOSE;
+                        END;
+           end;
+        END;
+     // INGRESAR  EL DETALLE  DEL PAGO EN EL BANCO CON CHEQUE
+         FOR I := 1 TO sgdetabanco.ROWCOUNT -2 DO
+         BEGIN
+           IF TRIM(sgdetabanco.CELLS[0,I]) > '0' THEN
+           BEGIN
+           DATAMODULE1.qrydetallepago.SQL.CLEAR;
+           DATAMODULE1.qrydetallepago.SQL.ADD('SELECT * FROM DET_PAGO_AUTOLIQUIDACIONES WHERE NUM_PLANILLA = :"NUMERO" AND COD_BANCO = :"BANCO" AND NUM_CUENTA = :"CUENTA"');
+           DATAMODULE1.qrydetallepago.Parameters[0].VALUE := EDTPLANILLA.TEXT;
+           DATAMODULE1.qrydetallepago.Parameters[1].VALUE := TRIM(sgdetabanco.CELLS[0,I]);
+           DATAMODULE1.qrydetallepago.Parameters[2].VALUE := TRIM(sgdetabanco.CELLS[1,I]);
+           DATAMODULE1.qrydetallepago.OPEN;
+                 IF DATAMODULE1.qrydetallepago.RecordCount = 0 THEN
+                 BEGIN
+                 DATAMODULE1.qrydetallepago.Insert;
+                 DATAMODULE1.qrydetallepagoNUM_PLANILLA.Value := edtplanilla.TEXT;
+                 DATAMODULE1.qrydetallepagoCOD_BANCO.Value :=  TRIM(sgdetabanco.CELLS[0,I]);
+                 DATAMODULE1.qrydetallepagoNUM_CUENTA.Value := TRIM(sgdetabanco.CELLS[1,I]);
+                 DATAMODULE1.qrydetallepagoVAL_CHEQUE.Value := STRTOFLOAT(sgdetabanco.CELLS[2,I]);
+                 DATAMODULE1.qrydetallepago.Post;
+                 DATAMODULE1.qrydetallepago.CLOSE;
+
+                 END
+                 ELSE
+                 IF DATAMODULE1.qrydetallepago.RecordCount > 0 THEN
+                 BEGIN
+                 DATAMODULE1.qrydetallepago.Edit;
+                 DATAMODULE1.qrydetallepagoNUM_PLANILLA.Value := edtplanilla.TEXT;
+                 DATAMODULE1.qrydetallepagoCOD_BANCO.Value :=  TRIM(sgdetabanco.CELLS[0,I]);
+                 DATAMODULE1.qrydetallepagoNUM_CUENTA.Value := TRIM(sgdetabanco.CELLS[1,I]);
+                 DATAMODULE1.qrydetallepagoVAL_CHEQUE.Value := STRTOFLOAT(sgdetabanco.CELLS[2,I]);
+                 DATAMODULE1.qrydetallepago.Post;
+                 DATAMODULE1.qrydetallepago.CLOSE;
+
+
+                 END;
+               END;
+           END;
+
+
+
+
+ // GRABAR  LAS  NOTAS  DE AUTOLIQUIDACIONES
+    DATAMODULE1.qrynotasautoliquidacion.CLOSE;
+    DATAMODULE1.qrynotasautoliquidacion.SQL.CLEAR;
+    DATAMODULE1.qrynotasautoliquidacion.SQL.ADD('SELECT * FROM NOTAS_AUTOLIQUIDACION WHERE NUM_PLANILLA = :"NUMERO"');
+    DATAMODULE1.qrynotasautoliquidacion.Parameters[0].VALUE := TRIM(EDTPLANILLA.TEXT);
+    DATAMODULE1.qrynotasautoliquidacion.Open;
+            IF DATAMODULE1.qrynotasautoliquidacion.RecordCount = 0 THEN
+            begin
+            DATAMODULE1.qrynotasautoliquidacion.Insert;
+            DATAMODULE1.qrynotasautoliquidacionNUM_PLANILLA.Value := edtplanilla.Text;
+            DATAMODULE1.qrynotasautoliquidacionTIP_DOC_EMPRESA.Value := cbtipodocafiliado.Text;
+            DATAMODULE1.qrynotasautoliquidacionNUM_DOC_EMPRESA.Value := edtnumeroducafiliado.Text;
+            DATAMODULE1.qrynotasautoliquidacionTIP_NOTA.Value := ComboBox1.text;
+            DATAMODULE1.qrynotasautoliquidacionVAL_NOTA.Value := strtofloat(Edit4.Text);
+            //*****TIPO2 NOTAS AUTOLIQUIDACION*****//
+            DATAMODULE1.qrynotasautoliquidacionTIP_NOTA2.Value := 'D'; //Diferencia
+            //**************************************
+            DATAMODULE1.qrynotasautoliquidacion.Post;
+
+            end
+            else
+            begin
+            DATAMODULE1.qrynotasautoliquidacion.edit;
+            DATAMODULE1.qrynotasautoliquidacionNUM_PLANILLA.Value := edtplanilla.Text;
+            DATAMODULE1.qrynotasautoliquidacionTIP_DOC_EMPRESA.Value := cbtipodocafiliado.Text;
+            DATAMODULE1.qrynotasautoliquidacionNUM_DOC_EMPRESA.Value := edtnumeroducafiliado.Text;
+            DATAMODULE1.qrynotasautoliquidacionTIP_NOTA.Value := ComboBox1.text;
+            DATAMODULE1.qrynotasautoliquidacionVAL_NOTA.Value := strtofloat(Edit4.Text);
+            //*****TIPO2 NOTAS AUTOLIQUIDACION*****//
+            DATAMODULE1.qrynotasautoliquidacionTIP_NOTA2.Value := 'D'; //Diferencia
+            //**************************************
+            DATAMODULE1.qrynotasautoliquidacion.Post;
+            end;
+    // borrar  si  quedo en cero
+    DATAMODULE1.qrynotasautoliquidacion.CLOSE;
+    DATAMODULE1.qrynotasautoliquidacion.SQL.CLEAR;
+    DATAMODULE1.qrynotasautoliquidacion.SQL.ADD('DELETE  FROM NOTAS_AUTOLIQUIDACION WHERE  NUM_PLANILLA = :"NUMERO" AND VAL_NOTA = :"VALOR"');
+    DATAMODULE1.qrynotasautoliquidacion.Parameters[0].VALUE := TRIM(EDTPLANILLA.TEXT);
+    DATAMODULE1.qrynotasautoliquidacion.Parameters[1].VALUE := 0;
+    DATAMODULE1.qrynotasautoliquidacion.ExecSQL;
+
+   DATAMODULE1.DTBDATAMEC.CommitTrans;
+   NUEVO_REGISTRO;
+   FRMPAGOUPC.PAGECONTROL1.ACTIVEPAGEINDEX := 0;
+   EDTPLANILLA.SETFOCUS;
+    EXCEPT
+   DATAMODULE1.DTBDATAMEC.RollbackTrans;
+   PBRGRABARDETALLE.MIN := 0;
+   PBRGRABARDETALLE.POSITION := 0;
+   PBRGRABARDETALLE.MAX := SGUPC.ROWCOUNT -2;
+   SHOWMESSAGE('NO SE PUEDE  GRABAR  LA PLANILLA  DE  AUTOLIQUIDACIONES  PORQUE  PRESENTA  ERRORES');
+   RAISE;
+   END;
+
+end;
+
+procedure TFRMPAGOUPC.cbtipodocafiliadoExit(Sender: TObject);
+begin
+    if cbtipodocafiliado.Text = '' then
+    begin
+    ShowMessage(LowerCase('Seleccione  el tipo de  documento'));
+    cbtipodocafiliado.SetFocus;
+    end;
+end;
+
+procedure TFRMPAGOUPC.FormActivate(Sender: TObject);
+begin
+WindowState := wsNormal;
+top := 0;
+Left := 0;
+end;
+
+procedure TFRMPAGOUPC.BitBtn1Click(Sender: TObject);
+begin
+frmconsultaafiliadosben1:=Tfrmconsultaafiliadosben1.create(application);
+   try
+   frmconsultaafiliadosben1.show;
+   //finally
+   except
+      frmconsultaafiliadosben1.Free;
+   end;
+
+end;
+
+procedure TFRMPAGOUPC.GroupBox3Enter(Sender: TObject);
+begin
+        if SGUPC.RowCount > 2 then
+        begin
+        PAGECONTROL1.ActivePageIndex := 1;
+        //cbbanco.SETFOCUS;
+        EDTVALEFECTIVO.SetFocus;
+        end;
+        if SGUPC.RowCount = 2 then
+        begin
+        PAGECONTROL1.ActivePageIndex := 0;
+        cbtipodocafiliado.SETFOCUS;
+        end;
+
+end;
+
+procedure TFRMPAGOUPC.BitBtn2Click(Sender: TObject);
+begin
+IF MESSAGEDLG(LowerCase('DESEA  BORRAR LA PLANILLA  DE  AUTOLIQUIDACION ?'), MTCONFIRMATION, [MBYES, MBNO], 1) = MRYES THEN
+  BEGIN
+  TRY
+          DATAMODULE1.QRYPAGOUPC.CLOSE;
+          DATAMODULE1.QRYPAGOUPC.SQL.CLEAR;
+          DATAMODULE1.QRYPAGOUPC.SQL.ADD('delete FROM DET_PAGO_UPC_ADICIONAL WHERE NUM_PLANILLA =:"NUM_PLANILLA"');
+          DATAMODULE1.QRYPAGOUPC.Parameters[0].VALUE := trim(edtplanilla.TEXT);
+          DATAMODULE1.QRYPAGOUPC.ExecSQL;
+
+         // BORRAR EL DETALLE
+          DATAMODULE1.DTBDATAMEC.BeginTrans;
+          DATAMODULE1.QRYAUTOLIQUIDACION.CLOSE;
+          DATAMODULE1.QRYAUTOLIQUIDACION.SQL.CLEAR;
+          DATAMODULE1.QRYAUTOLIQUIDACION.SQL.ADD('DELETE  FROM AUTOLIQUIDACION  WHERE  NUM_PLANILLA = :"PLANILLA"');
+          DATAMODULE1.QRYAUTOLIQUIDACION.Parameters[0].VALUE := trim(edtplanilla.TEXT);
+          DATAMODULE1.QRYAUTOLIQUIDACION.EXECSQL;
+          DATAMODULE1.DTBDATAMEC.CommitTrans;
+          NUEVO_REGISTRO;
+          edtplanilla.SetFocus;
+         EXCEPT
+           DATAMODULE1.DTBDATAMEC.RollbackTrans;
+           SHOWMESSAGE(LowerCase('NO SE PUEDE  BORRAR LA  PLANILLA LA AUTOLIQUIDACION'));
+           RAISE;
+           END;
+
+   end;
+
+end;
+
+END.
+
